@@ -1,0 +1,14 @@
+*{
+    pading: 0;
+    margin: 0;
+}
+.navbar{
+    background-color: #b403ff;
+}
+.formulario{
+    width: 50%;
+    margin: 0 auto;
+}
+.btnRegistrar{
+    text-align: center;
+}
