@@ -1,4 +1,42 @@
 package cl.awakelab.sprint06.service.serviceimpl;
 
-public class LiquidacionImpl {
+import cl.awakelab.sprint06.entity.Liquidacion;
+import cl.awakelab.sprint06.repository.ILiquidacionRepository;
+import cl.awakelab.sprint06.service.ILiquidacionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.NoSuchElementException;
+
+@Service("liquidacionImpl")
+public class LiquidacionImpl implements ILiquidacionService {
+    @Autowired
+    ILiquidacionRepository objLiquidacionRepo;
+
+    @Override
+    public Liquidacion cerarLiquidacion(Liquidacion liquidacion) {
+        return objLiquidacionRepo.save(liquidacion);
+    }
+
+    @Override
+    public List<Liquidacion> listarLiquidacion() {
+        return objLiquidacionRepo.findAll();
+    }
+
+    @Override
+    public Liquidacion buscarLiquidacion(int idLiquidacion) {
+        return objLiquidacionRepo.findById(idLiquidacion).orElseThrow(()->new NoSuchElementException("No se encontro Liquidacion"));
+    }
+
+    @Override
+    public Liquidacion actualizarLiquidacion(Liquidacion liquidacionActualizar) {
+        Liquidacion liquidacion = buscarLiquidacion((int) liquidacionActualizar.getIdLiquidacion());
+        return objLiquidacionRepo.save(liquidacionActualizar);
+    }
+
+    @Override
+    public void eliminarLiquidacion(int idLiquidacion) {
+        objLiquidacionRepo.deleteById(idLiquidacion);
+    }
 }

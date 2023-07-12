@@ -9,6 +9,6 @@ public interface ITrabajadorService {
     Trabajador crearTrabajador(Trabajador trabajador);
     List<Trabajador> listarTrabajador();
     Trabajador buscarTrabajador(int idTrabajador);
-    Usuario actualizarTrabajador(Trabajador trabajadorActualizar);
+    Trabajador actualizarTrabajador(Trabajador trabajadorActualizar);
     void eliminarTrabajador(int idTrabajador);
 }

@@ -9,6 +9,6 @@ public interface IPerfilService {
     Perfil cerarPerfil(Perfil perfil);
     List<Perfil> listarPerfil();
     Perfil buscarPerfil(int idPerfil);
-    Perfil actualizarPerfil(Usuario perfilActualizar);
+    Perfil actualizarPerfil(Perfil perfilActualizar);
     void eliminarPerfil(int idPerfil);
 }
