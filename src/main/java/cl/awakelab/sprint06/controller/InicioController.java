@@ -22,7 +22,7 @@ public class InicioController {
         model.addAttribute("title", "Iniciar Sesión");
         return "login";
     }
-    @GetMapping("/eidtarUsuario.html")
+    @GetMapping("/editarUsuario.html")
     public String editU(Model model){
         model.addAttribute("title","Editar Usuario");
         return "editarUsuario";
