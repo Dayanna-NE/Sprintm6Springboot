@@ -17,6 +17,10 @@ body{
     width: 64px;
     height: 64px;
 }
+.imagenBigHome{
+    width: 400px;
+    height: 400px;
+}
 .btnHome{
     width: 200px;
 }

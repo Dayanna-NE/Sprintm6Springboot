@@ -24,7 +24,7 @@ public class LoginController {
     public String loginVerificador(@ModelAttribute Usuario usuario){
         boolean loginExitoso = objLoginService.buscarUsuario(usuario.getRun(),usuario.getClave());
         if (loginExitoso){
-            return "redirect:/usuario";
+            return "redirect:/bienvenida";
         }
         return "redirect:/login";
     }
