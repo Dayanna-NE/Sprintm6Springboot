@@ -12,11 +12,7 @@ public class InicioController {
         model.addAttribute("title", "Bienvenido");
         return "home";
     }
-    @GetMapping("/registro.html")
-    public String registro(Model model){
-        model.addAttribute("title", "Registro");
-        return "registro";
-    }
+
     @GetMapping("/login.html")
     public String login(Model model){
         model.addAttribute("title", "Iniciar Sesión");

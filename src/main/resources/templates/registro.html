@@ -5,41 +5,42 @@
 <header th:replace="plantillas/base :: header"> </header>
 <h1 class="text-center mt-4">Registro</h1>
 <section class="formulario mb-5">
-<form >
+<form th:action="@{/usuario/crear}" method="get" th:object="${usuarioHtml}">
+
   <div class="mb-3">
     <label for="run" class="form-label">RUN</label>
-    <input type="number" class="form-control" id="run" placeholder="Ingrese RUN" required>
+    <input th:field="*{run}" type="number" class="form-control" id="run" placeholder="Ingrese RUN" required>
   </div>
   <div class="mb-3">
     <label for="nombre" class="form-label">Nombre</label>
-    <input type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
+    <input th:field="*{nombre}" type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
   </div>
   <div class="mb-3">
     <label for="apellido1" class="form-label">Apellido Paterno</label>
-    <input type="text" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
+    <input th:field="*{apellido1}" type="text" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
   </div>
   <div class="mb-3">
     <label for="apellido2" class="form-label">Apellido Materno (Opcional)</label>
-    <input type="text" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)" >
+    <input th:field="*{apellido2}" type="text" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)" >
   </div>
   <div class="mb-3">
     <label for="telefono" class="form-label">Teléfono</label>
-    <input type="number" class="form-control" id="telefono" placeholder="Ingrese Teléfono" required>
+    <input th:field="*{telefono}" type="number" class="form-control" id="telefono" placeholder="Ingrese Teléfono" required>
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Correo Electronico</label>
-    <input type="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
+    <input th:field="*{email}" type="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
   </div>
   <div class="mb-3">
     <label for="clave" class="form-label">Contraseña</label>
-    <input type="password" class="form-control" placeholder="Ingrese Contraseña" id="clave">
+    <input th:field="*{clave}" type="password" class="form-control" placeholder="Ingrese Contraseña" id="clave">
   </div>
   <div class="mb-3 form-check-inline" >
-    <input class="form-check-input" type="radio" id="option3" name="idPerfil" value="3">
+    <input th:field="*{perfil.idPerfil}" class="form-check-input" type="radio" id="option3" name="idPerfil" th:value="3">
     <label  for="option3">Empleador</label><br>
   </div>
   <div class="mb-3 form-check-inline" >
-    <input class="form-check-input" type="radio" id="option2" name="idPerfil" value="2">
+    <input th:field="*{perfil.idPerfil}"  class="form-check-input" type="radio" id="option2" name="idPerfil" th:value="2">
     <label  for="option2">Contador</label><br>
   </div>
   <div class="btnRegistrar mb-3">

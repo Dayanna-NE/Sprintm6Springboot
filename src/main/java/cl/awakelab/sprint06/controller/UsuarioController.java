@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -21,9 +22,16 @@ public class UsuarioController {
         model.addAttribute("usuariosHtml",usuarios);
         return "listarUsuario";
     }
-
-    @GetMapping("/crearUsuario")
+    @GetMapping("/formularioCrear")
+    public String enviarCrear(Model model){
+        Usuario usuario = new Usuario();
+        model.addAttribute("usuarioHtml", usuario);
+        model.addAttribute("title", "Registro de Usuario");
+        return "registro";
+    }
+    @GetMapping("/crear")
     public String crearUsuario(@ModelAttribute Usuario usuario){
+        usuario.setFechaCreacion(LocalDate.now());
         objUsuarioService.crearUsuario(usuario);
         return "redirect:/usuario";
     }
