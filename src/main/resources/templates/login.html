@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head th:replace="plantillas/base :: head">
 <body>
     <header th:replace="plantillas/base :: header"> </header>
     <h1 class="text-center mt-4">Inicio Sesión</h1>
     <hr>
     <section class="d-flex justify-content-center mt-5 mb-5">
-<form >
+<form th:action="@{/login}" method="post" th:object="${usuarioHtml}">
     <div class="mb-3">
         <label for="run" class="form-label">RUN</label>
-        <input type="number" class="form-control" id="run" placeholder="Ingrese RUN" aria-describedby="RUNhelp">
+        <input type="number" class="form-control" id="run" placeholder="Ingrese RUN" aria-describedby="RUNhelp" th:field="*{run}">
         <div id="RUNhelp" class="form-text">Ingrese su RUN sin puntos ni guión</div>
     </div>
     <div class="mb-3">
         <label for="clave" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" placeholder="Ingrese Contraseña" id="clave">
+        <input type="password" class="form-control" placeholder="Ingrese Contraseña" id="clave" th:field="*{clave}">
     </div>
     <div class="d-flex justify-content-end" >
         <a href="#">Olvide mi clave</a>
     </div>
     <button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
     <div class="d-flex justify-content-start mt-3" >
-        <a href="registro.html">Registrarse</a>
+        <a href="/usuario/formularioCrear">Registrarse</a>
     </div>
 </form>
 

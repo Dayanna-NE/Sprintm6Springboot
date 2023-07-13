@@ -7,6 +7,19 @@ body{
     flex-direction: column;
     min-height: 100vh;
 }
+#bodyHome{
+    background: RGB(233,236,239);
+}
+.caracteristicasHome{
+    background-color: aliceblue;
+}
+.imagenMiniHome{
+    width: 64px;
+    height: 64px;
+}
+.btnHome{
+    width: 200px;
+}
 .navbar{
     background-color: #b403ff;
 }
