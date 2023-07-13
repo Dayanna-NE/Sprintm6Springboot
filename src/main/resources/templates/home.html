@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:include="~{../static/html/head.html}"></head>
+<head th:replace="plantillas/base :: head">
+    <title>Home</title>
+</head>
 <body>
-<header th:include="~{../static/html/header.html}"></header>
+<header th:replace="plantillas/base :: header"></header>
 
 
 
+<footer th:replace="plantillas/base :: footer"></footer>
 
-<!--Script Bootstrap -->
-
+<section th:replace="plantillas/base :: script"></section>
 
 </body>
 </html>

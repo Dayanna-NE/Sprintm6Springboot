@@ -19,6 +19,7 @@ public class EmpleadorController {
     public String listarEmpleadores(Model model){
         //obtenemos los elementos de mi BD y lo guardo en una list
         List<Empleador> listarEmpleadores = objEmpleadorService.listarEmpleador();
+        model.addAttribute("title", "Lista de Empleadores");//actualizamos el title
         //Enviamos informacion al html a traves de nuestra variable html
         model.addAttribute("empleadoresHtml",listarEmpleadores);
         // Vista a la que nos dirigiremos

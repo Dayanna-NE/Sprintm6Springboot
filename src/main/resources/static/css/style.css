@@ -2,6 +2,11 @@
     pading: 0;
     margin: 0;
 }
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 .navbar{
     background-color: #b403ff;
 }
@@ -11,4 +16,23 @@
 }
 .btnRegistrar{
     text-align: center;
+}
+
+footer {
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    margin-top:  auto;
+}
+.github-link {
+    color:white;
+    text-decoration: none;
+    margin-left: 5px;
+}
+.imgGit-hub{
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 8px;
 }
