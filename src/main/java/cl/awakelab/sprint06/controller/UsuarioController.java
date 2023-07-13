@@ -5,10 +5,7 @@ import cl.awakelab.sprint06.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,6 +34,17 @@ public class UsuarioController {
         model.addAttribute("title","Editar Usuario");
         model.addAttribute("usuarioHtml",usuarioQueEditaremos);
         return "editarUsuario";
+    }
+    @PostMapping("/editar")
+    public String actualizarUsuario(@ModelAttribute Usuario usuarioActualizar){
+        objUsuarioService.actualizarUsuario(usuarioActualizar);
+        return "redirect:/usuario";
+    }
+
+    @GetMapping("/eliminar/{idUsuario}")
+    public String eliminarUsuario(@PathVariable int idUsuario){
+        objUsuarioService.eliminarUsuario(idUsuario);
+        return "redirect:/usuario";
     }
 
 

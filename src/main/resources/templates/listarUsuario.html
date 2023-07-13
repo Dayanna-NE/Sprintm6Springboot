@@ -39,7 +39,7 @@
                 <a th:href="@{/usuario/editar/}+${usuario.getIdUsuario()}" class="m-2">
                     <i class="fas fa-sync"></i>
                 </a>
-                <a href="#" class="m-2">
+                <a th:href="@{/usuario/eliminar/}+${usuario.getIdUsuario()}" class="m-2">
                     <i class="fas fa-trash"></i>
                 </a>
             </td>
