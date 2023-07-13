@@ -3,47 +3,35 @@
 <head th:replace="plantillas/base :: head">
 <body>
 <header th:replace="plantillas/base2 :: header"> </header>
-<h1 class="text-center mt-4">Registro</h1>
-<section class="formulario mb-5">
-    <form >
-        <div class="mb-3">
-            <label for="run" class="form-label">RUN</label>
-            <input type="number" class="form-control" id="run" placeholder="Ingrese RUN" required>
-        </div>
+<h1 class="text-center mt-4">Editar Usuario</h1>
+<section class="formulario mb-5" >
+    <form  >
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
+            <input th:value="${usuarioHtml.getNombre()}" type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
         </div>
         <div class="mb-3">
             <label for="apellido1" class="form-label">Apellido Paterno</label>
-            <input type="text" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
+            <input th:value="${usuarioHtml.getApellido1()}" type="text" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
         </div>
         <div class="mb-3">
             <label for="apellido2" class="form-label">Apellido Materno (Opcional)</label>
-            <input type="text" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)" >
+            <input th:value="${usuarioHtml.getApellido2()}" type="text" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)" >
         </div>
         <div class="mb-3">
             <label for="telefono" class="form-label">Teléfono</label>
-            <input type="number" class="form-control" id="telefono" placeholder="Ingrese Teléfono" required>
+            <input th:value="${usuarioHtml.getTelefono()}" type="number" class="form-control" id="telefono" placeholder="Ingrese Teléfono" >
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Correo Electronico</label>
-            <input type="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
+            <input th:value="${usuarioHtml.getEmail()}" type="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" required>
         </div>
         <div class="mb-3">
             <label for="clave" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" placeholder="Ingrese Contraseña" id="clave">
+            <input th:value="${usuarioHtml.getClave()}" type="password" class="form-control" placeholder="Ingrese Contraseña" id="clave"required>
         </div>
-        <div class="mb-3 form-check-inline" >
-            <input class="form-check-input" type="radio" id="option3" name="idPerfil" value="3">
-            <label  for="option3">Empleador</label><br>
-        </div>
-        <div class="mb-3 form-check-inline" >
-            <input class="form-check-input" type="radio" id="option2" name="idPerfil" value="2">
-            <label  for="option2">Contador</label><br>
-        </div>
-        <div class="btnRegistrar mb-3">
-            <button type="submit" class="btn btn-primary mt-3 w-50">Registrar</button>
+        <div class="btnEditar mb-3">
+            <button type="submit" class="btn btn-primary mt-3 w-50">Editar</button>
         </div>
     </form>
 </section>
