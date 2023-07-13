@@ -29,6 +29,13 @@ public class UsuarioController {
         model.addAttribute("title", "Registro de Usuario");
         return "registro";
     }
+    @GetMapping("/formularioCrear2")
+    public String enviarCrear2(Model model){
+        Usuario usuario = new Usuario();
+        model.addAttribute("usuarioHtml", usuario);
+        model.addAttribute("title", "Registro de Usuario");
+        return "registro2";
+    }
     @GetMapping("/crear")
     public String crearUsuario(@ModelAttribute Usuario usuario){
         usuario.setFechaCreacion(LocalDate.now());

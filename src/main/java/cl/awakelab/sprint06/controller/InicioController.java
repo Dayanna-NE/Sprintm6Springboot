@@ -12,11 +12,11 @@ public class InicioController {
         model.addAttribute("title", "Bienvenido");
         return "home";
     }
-
-
-    @GetMapping("/editarUsuario.html")
-    public String editU(Model model){
-        model.addAttribute("title","Editar Usuario");
-        return "editarUsuario";
+    @GetMapping("/2")
+    public String home2(Model model){
+        model.addAttribute("title", "Bienvenido");
+        return "home2";
     }
+
+
 }

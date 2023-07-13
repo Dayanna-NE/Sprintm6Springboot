@@ -5,11 +5,13 @@
   <title>Lista de Empleadores</title>
 </head>
 <body>
-
 <header th:replace="plantillas/base2 :: header"> </header>
+</section>
 <h1 class="text-center mt-4">Empleadores</h1>
     <div class="btnRegistrar mb-3">
+      <a th:href="@{/usuario/formularioCrear}">
       <button type="submit" class="btn btn-primary mt-3 w-50">Agregar Empleador</button>
+      </a>
     </div>
     <section >
       <table id="lista" class="w-75">
@@ -32,7 +34,7 @@
           <td th:text="${empleado.getEmail()}"></td>
           <td class="text-center">
             <a href="#" class="m-2">
-              <i class="fas fa-sync"></i>
+              <i class="fa-sharp fa-solid fa-pen-to-square"></i>
             </a>
             <a href="#" class="m-2">
               <i class="fas fa-trash"></i>

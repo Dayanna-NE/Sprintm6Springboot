@@ -34,7 +34,15 @@ body{
 .btnRegistrar{
     text-align: center;
 }
+.Logotipo{
 
+    height: 85px;
+    width: 350px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+
+}
 footer {
     background-color: black;
     padding: 10px;

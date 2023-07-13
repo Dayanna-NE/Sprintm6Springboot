@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head th:replace="plantillas/base :: head">
 <body>
-<header th:replace="plantillas/base2 :: header"> </header>
+<header th:replace="plantillas/base :: header"> </header>
 <h1 class="text-center mt-4">Registro</h1>
 <section class="formulario mb-5">
 <form th:action="@{/usuario/crear}" method="get" th:object="${usuarioHtml}">

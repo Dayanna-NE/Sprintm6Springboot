@@ -9,7 +9,9 @@
 <header th:replace="plantillas/base2 :: header"> </header>
 <h1 class="text-center mt-4">Usuarios</h1>
 <div class="btnRegistrar mb-3">
+    <a th:href="@{/usuario/formularioCrear}">
     <button type="submit" class="btn btn-primary mt-3 w-50">Agregar Usuario</button>
+    </a>
 </div>
 <section >
     <table id="lista" class="w-75">
@@ -37,7 +39,7 @@
             <td th:if="${usuario.getPerfil().getIdPerfil()==3}">Empleador</td>
             <td class="text-center">
                 <a th:href="@{/usuario/editar/}+${usuario.getIdUsuario()}" class="m-2">
-                    <i class="fas fa-sync"></i>
+                    <i class="fa-sharp fa-solid fa-pen-to-square"></i>
                 </a>
                 <a th:href="@{/usuario/eliminar/}+${usuario.getIdUsuario()}" class="m-2">
                     <i class="fas fa-trash"></i>
