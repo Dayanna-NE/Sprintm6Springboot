@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="plantillas/base :: head">
+
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+
+<header th:replace="plantillas/base :: header"> </header>
+<h1 class="text-center mt-4">Usuarios</h1>
+<div class="btnRegistrar mb-3">
+    <button type="submit" class="btn btn-primary mt-3 w-50">Agregar Usuario</button>
+</div>
+<section >
+    <table id="lista" class="w-75">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>RUN</th>
+            <th>Nombre</th>
+            <th>Apellido Materno</th>
+            <th>Email</th>
+            <th>Perfil</th>
+            <th data-orderable="false">Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario: ${usuariosHtml}">
+            <td th:text="${usuario.getIdUsuario()}"></td>
+            <td th:text="${usuario.getRun()}"></td>
+            <td th:text="${usuario.getNombre()}"></td>
+            <td th:text="${usuario.getApellido1()}"></td>
+            <td th:text="${usuario.getEmail()}"></td>
+
+            <td th:if="${usuario.getPerfil().getIdPerfil()==1}">Administrativo</td>
+            <td th:if="${usuario.getPerfil().getIdPerfil()==2}">Contador</td>
+            <td th:if="${usuario.getPerfil().getIdPerfil()==3}">Empleador</td>
+
+
+
+            <td class="text-center">
+                <a href="#" class="m-2">
+                    <i class="fas fa-sync"></i>
+                </a>
+                <a href="#" class="m-2">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</section>
+
+<footer th:replace="plantillas/base :: footer"></footer>
+<section th:replace="plantillas/base :: script"></section>
+</body>
+</html>
