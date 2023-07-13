@@ -61,3 +61,8 @@ footer {
     background: white;
     border-radius: 8px;
 }
+.inline-btn {
+    display: inline-block;
+    text-align: left;
+    margin-left: 10px;
+}
