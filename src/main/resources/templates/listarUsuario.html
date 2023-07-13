@@ -36,7 +36,7 @@
             <td th:if="${usuario.getPerfil().getIdPerfil()==2}">Contador</td>
             <td th:if="${usuario.getPerfil().getIdPerfil()==3}">Empleador</td>
             <td class="text-center">
-                <a th:href="@{/editar/} + ${usuario.getIdUsuario()}" class="m-2">
+                <a th:href="@{/usuario/editar/}+${usuario.getIdUsuario()}" class="m-2">
                     <i class="fas fa-sync"></i>
                 </a>
                 <a href="#" class="m-2">
