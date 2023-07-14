@@ -5,11 +5,14 @@
     <header th:replace="plantillas/base :: header"> </header>
     <h1 class="text-center mt-4">Inicio Sesión</h1>
     <hr>
+    <div th:unless="${#strings.isEmpty(mensaje)}">
+        <div class="alert alert-danger ps-5" th:text="${mensaje}"></div>
+    </div>
     <section class="d-flex justify-content-center mt-5 mb-5">
 <form th:action="@{/login}" method="post" th:object="${usuarioHtml}">
     <div class="mb-3">
         <label for="run" class="form-label">RUN</label>
-        <input type="number" class="form-control" id="run" placeholder="Ingrese RUN" aria-describedby="RUNhelp" th:field="*{run}" required>
+        <input type="number" class="form-control" id="run" placeholder="Ingrese RUN" pattern="[0-9]+" aria-describedby="RUNhelp" th:field="*{run}" required>
         <div id="RUNhelp" class="form-text">Ingrese su RUN sin puntos ni guión</div>
     </div>
     <div class="mb-3">

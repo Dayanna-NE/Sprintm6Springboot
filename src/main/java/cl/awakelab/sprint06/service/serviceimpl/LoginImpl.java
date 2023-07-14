@@ -12,11 +12,9 @@ public class LoginImpl implements ILoginService {
     @Autowired
     ILoginRepository objLoginRepo;
     @Override
-    public boolean buscarUsuario(int rut, String clave) {
+    public Usuario buscarUsuario(int rut, String clave) {
         Usuario usuario = objLoginRepo.findByRunAndClave(rut, clave);
-        if (usuario != null){
-            return true;
-        }
-        return false;
+
+        return usuario;
     }
 }

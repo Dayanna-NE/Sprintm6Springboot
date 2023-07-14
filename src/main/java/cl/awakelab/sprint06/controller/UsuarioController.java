@@ -25,6 +25,8 @@ public class UsuarioController {
     @GetMapping("/formularioCrear")
     public String enviarCrear(Model model){
         Usuario usuario = new Usuario();
+        usuario.setRun(null);
+        usuario.setTelefono(null);
         model.addAttribute("usuarioHtml", usuario);
         model.addAttribute("title", "Registro de Usuario");
         return "registro";
@@ -32,6 +34,8 @@ public class UsuarioController {
     @GetMapping("/formularioCrear2")
     public String enviarCrear2(Model model){
         Usuario usuario = new Usuario();
+        usuario.setRun(null);
+        usuario.setTelefono(null);
         model.addAttribute("usuarioHtml", usuario);
         model.addAttribute("title", "Registro de Usuario");
         return "registro2";

@@ -26,7 +26,9 @@ public class UsuarioImpl implements IUsuarioService {
 
     @Override
     public Usuario buscarUsuarioId(int idUsuario) {
-        return objUsuarioRepo.findById(idUsuario).orElseThrow(()->new NoSuchElementException("No usuario con el id "+idUsuario));
+        Usuario usu =  objUsuarioRepo.findById(idUsuario).orElseThrow(()->new NoSuchElementException("No usuario con el id "+idUsuario));
+        System.out.printf(" Clave Usuario aqui <<<<<<<<<"+usu.getClave());
+        return usu;
     }
 
     @Override

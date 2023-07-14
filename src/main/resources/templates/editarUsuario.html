@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:replace="plantillas/base :: head">
+<head th:replace="plantillas/base :: head"></head>
 <body>
-<header th:replace="plantillas/base2 :: header"> </header>
+<header th:replace="plantillas/base2 :: header"></header>
 <h1 class="text-center mt-4">Editar Usuario</h1>
-<section class="formulario mb-5" >
-    <form th:action="@{/usuario/editar}" method="post"  th:object="${usuarioHtml}">
+<section class="formulario mb-5">
+    <form th:action="@{/usuario/editar}" method="post" th:object="${usuarioHtml}">
         <input type="hidden" th:field="*{idUsuario}" />
         <input type="hidden" th:field="*{perfil.idPerfil}" />
         <input type="hidden" th:field="*{run}" />
@@ -20,19 +20,19 @@
         </div>
         <div class="mb-3">
             <label for="apellido2" class="form-label">Apellido Materno (Opcional)</label>
-            <input th:field="*{apellido2}" type="text" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)" >
+            <input th:field="*{apellido2}" type="text" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)">
         </div>
         <div class="mb-3">
             <label for="telefono" class="form-label">Teléfono</label>
-            <input th:field="*{telefono}" type="number" class="form-control" id="telefono" placeholder="Ingrese Teléfono" >
+            <input th:field="*{telefono}" type="number" class="form-control" id="telefono" placeholder="Ingrese Teléfono">
         </div>
         <div class="mb-3">
-            <label for="email" class="form-label">Correo Electronico</label>
-            <input th:field="*{email}" type="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" required>
+            <label for="email" class="form-label">Correo Electrónico</label>
+            <input th:field="*{email}" type="email" class="form-control" id="email" placeholder="Ingrese Correo Electrónico" required>
         </div>
         <div class="mb-3">
             <label for="clave" class="form-label">Contraseña</label>
-            <input th:field="*{clave}" type="password" class="form-control" placeholder="Ingrese Contraseña" id="clave"required>
+            <input type="password" th:field="*{clave}" th:value="${usuarioHtml.clave}" class="form-control" placeholder="Ingrese Contraseña" id="clave" required>
         </div>
         <div class="btnEditar mb-3">
             <button type="submit" class="btn btn-primary mt-3 w-50">Editar</button>

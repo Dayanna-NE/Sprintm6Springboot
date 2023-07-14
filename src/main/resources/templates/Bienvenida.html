@@ -3,8 +3,11 @@
 <head th:replace="plantillas/base :: head">
 <body>
 <header th:replace="plantillas/base2 :: header"> </header>
-<section class="m-5">
-  <h1 class="text-center mt-5">Bienvvenido </h1>
+<div th:unless="${#strings.isEmpty(mensaje)}">
+  <div class="alert alert-success ps-5" th:text="${mensaje}"></div>
+</div>
+<section class="m-5 pt-5">
+  <h1 class="text-center mt-5">Bienvvenido <span th:text="${nombreUsuario}"></span> </h1>
   <h2 class="text-center mt-4 mb-5">¿Qué deseas hacer?</h2>
   <div class="bienvenidaBotones container text-center">
     <div class="container text-center">

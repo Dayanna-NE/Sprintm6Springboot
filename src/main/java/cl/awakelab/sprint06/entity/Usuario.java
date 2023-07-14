@@ -15,7 +15,7 @@ public class Usuario {
     @Column(name="id_usuario",nullable = false)
     private int idUsuario;
     @Column(unique = true,nullable = false)
-    private int run;
+    private Integer run;
     @Column(length = 200,nullable = false)
     private String clave;
     @Column(length = 100,nullable = false)
@@ -34,7 +34,7 @@ public class Usuario {
     @Column(name="fecha_creacion",nullable = false)
     private LocalDate fechaCreacion;
     @Column(columnDefinition = "bigint")
-    private long telefono;
+    private Long telefono;
     //enlazando con empleador
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Empleador> listarEmpleadores;

@@ -3,13 +3,14 @@
 <head th:replace="plantillas/base :: head">
 <body>
 <header th:replace="plantillas/base2 :: header"> </header>
-<h1 class="text-center mt-4">Registro</h1>
+<h1 class="text-center mt-4">Registro de Usuario</h1>
+<hr>
 <section class="formulario mb-5">
 <form th:action="@{/usuario/crear}" method="get" th:object="${usuarioHtml}">
 
   <div class="mb-3">
     <label for="run" class="form-label">RUN</label>
-    <input th:field="*{run}" type="number" class="form-control" id="run" placeholder="Ingrese RUN" required>
+    <input th:field="*{run}" type="number" class="form-control" id="run" placeholder="Ingrese RUN" value="" required>
   </div>
   <div class="mb-3">
     <label for="nombre" class="form-label">Nombre</label>
@@ -25,7 +26,7 @@
   </div>
   <div class="mb-3">
     <label for="telefono" class="form-label">Teléfono</label>
-    <input th:field="*{telefono}" type="number" class="form-control" id="telefono" placeholder="Ingrese Teléfono" required>
+    <input th:field="*{telefono}" type="number" class="form-control" id="telefono" placeholder="Ingrese Teléfono"  value=""  required>
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Correo Electronico</label>
@@ -33,7 +34,7 @@
   </div>
   <div class="mb-3">
     <label for="clave" class="form-label">Contraseña</label>
-    <input th:field="*{clave}" type="password" class="form-control" placeholder="Ingrese Contraseña" id="clave">
+    <input th:field="*{clave}" type="password"  class="form-control" placeholder="Ingrese Contraseña" id="clave">
   </div>
   <div class="mb-3 form-check-inline" >
     <input th:field="*{perfil.idPerfil}" class="form-check-input" type="radio" id="option3" name="idPerfil" th:value="3" required>

@@ -21,11 +21,18 @@ public class LoginController {
         return "login";
     }
     @PostMapping
-    public String loginVerificador(@ModelAttribute Usuario usuario){
-        boolean loginExitoso = objLoginService.buscarUsuario(usuario.getRun(),usuario.getClave());
-        if (loginExitoso){
-            return "redirect:/bienvenida";
+    public String loginVerificador(@ModelAttribute Usuario usuario, Model model){
+        Usuario usuarioLogin = objLoginService.buscarUsuario(usuario.getRun(),usuario.getClave());
+
+        if (usuarioLogin!=null){
+            if (usuarioLogin.getRun() == usuario.getRun() && usuarioLogin.getClave().equals(usuario.getClave())){
+                model.addAttribute("mensaje","Usuario "+usuarioLogin.getNombre()+" ingreso correctamente ~(*o*)~");
+                model.addAttribute("nombreUsuario", usuarioLogin.getNombre());
+                return "bienvenida";
+            }
         }
-        return "redirect:/login";
+        model.addAttribute("mensaje","EL USUARIO QUE HA INGRESADO NO EXISTE <(-.-)>");
+        model.addAttribute("usuarioHtml",usuario);
+        return "login";
     }
 }
