@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="plantillas/base :: head">
+<body>
+<header th:replace="plantillas/base2 :: header"> </header>
+<h1 class="text-center mt-4">Registro de Empleador</h1>
+<hr>
+<section class="formulario mb-5">
+  <form th:action="@{/empleador/crear}" method="post" >
+
+    <div class="mb-3">
+      <label for="run" class="form-label">RUN</label>
+      <input  type="number" name="run" class="form-control" id="run" placeholder="Ingrese RUN" value="" required>
+    </div>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input  type="text" name="nombre" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
+    </div>
+    <div class="mb-3">
+      <label for="apellido1" class="form-label">Apellido Paterno</label>
+      <input  type="text" name="apellido1" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
+    </div>
+    <div class="mb-3">
+      <label for="apellido2" class="form-label">Apellido Materno (Opcional)</label>
+      <input type="text" name="apellido2" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)" >
+    </div>
+    <div class="mb-3">
+      <label for="direccion" class="form-label">Dirección</label>
+      <input type="text" class="form-control" id="direccion" placeholder="Ingrese Dirección"  value=""  >
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Correo Electronico</label>
+      <input  type="email" name="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
+    </div>
+    <div class="mb-3">
+      <label for="telefono" class="form-label">telefono</label>
+      <input  type="number" name="telefono" class="form-control" placeholder="Ingrese Teléfono" id="telefono">
+    </div>
+    <div class="btnRegistrar mb-3">
+      <button type="submit" class="btn btn-primary mt-3 w-50">Registrar</button>
+    </div>
+  </form>
+</section>
+<footer th:replace="plantillas/base :: footer"></footer>
+<section th:replace="plantillas/base :: script"></section>
+</body>
+</html>

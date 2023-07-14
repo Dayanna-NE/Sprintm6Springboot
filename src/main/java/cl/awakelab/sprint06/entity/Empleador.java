@@ -23,6 +23,8 @@ public class Empleador {
     private String apellido1;
     @Column(name = "apellido_2",length = 100)
     private String apellido2;
+    @Column(name = "direccion",columnDefinition = "text(500)")
+    private String direccion;
     @Column(length = 100)
     private String email;
     //Id Usuario

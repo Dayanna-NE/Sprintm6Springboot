@@ -9,7 +9,7 @@
 </section>
 <h1 class="text-center mt-4">Empleadores</h1>
     <div class="btnRegistrar mb-3">
-      <a th:href="@{/usuario/crear}">
+      <a th:href="@{/empleador/crear}">
       <button type="submit" class="btn btn-primary mt-3 w-50">Agregar Empleador</button>
       </a>
     </div>
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
         <tr th:each="empleado: ${empleadoresHtml}">
-          <td th:text="${empleado.getIdEmpleador()}"></td>
+          <th th:text="${empleado.getIdEmpleador()}"></th>
           <td th:text="${empleado.getRun()}"></td>
           <td th:text="${empleado.getNombre()}"></td>
           <td th:text="${empleado.getApellido1()+' '+empleado.getApellido2()}" ></td>
