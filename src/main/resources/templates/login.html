@@ -9,15 +9,15 @@
         <div class="alert alert-danger ps-5" th:text="${mensaje}"></div>
     </div>
     <section class="d-flex justify-content-center mt-5 mb-5">
-<form th:action="@{/login}" method="post" th:object="${usuarioHtml}">
+<form th:action="@{/login}" method="post">
     <div class="mb-3">
         <label for="run" class="form-label">RUN</label>
-        <input type="number" class="form-control" id="run" placeholder="Ingrese RUN" pattern="[0-9]+" aria-describedby="RUNhelp" th:field="*{run}" required>
+        <input type="number" class="form-control" id="run" placeholder="Ingrese RUN" pattern="[0-9]+" aria-describedby="RUNhelp" name="run" required>
         <div id="RUNhelp" class="form-text">Ingrese su RUN sin puntos ni guión</div>
     </div>
     <div class="mb-3">
         <label for="clave" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" placeholder="Ingrese Contraseña" id="clave" th:field="*{clave}" required>
+        <input type="password" class="form-control" placeholder="Ingrese Contraseña" id="clave" name="clave" required>
     </div>
     <div class="d-flex justify-content-end" >
         <a href="#">Olvide mi clave</a>

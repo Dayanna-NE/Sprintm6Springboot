@@ -13,9 +13,9 @@ public class InstitucionSalud {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_inst_salud",nullable = false)
     private int idInstSalud;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String descripcion;
-    @Column(name = "proc_dcto", nullable = false)
+    @Column(name = "proc_dcto", nullable = false,columnDefinition = "float")
     private float procDcto;
     //enlazando con trabajador
     @OneToMany(mappedBy = "institucionSalud",cascade = CascadeType.ALL)

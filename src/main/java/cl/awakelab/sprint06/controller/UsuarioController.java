@@ -24,23 +24,24 @@ public class UsuarioController {
     }
     @GetMapping("/crear")
     public String enviarCrear(Model model){
-        Usuario usuario = new Usuario();
-        model.addAttribute("usuarioHtml", usuario);
         model.addAttribute("title", "Registro de Usuario");
         return "registro";
     }
     @GetMapping("/crear2")
     public String enviarCrear2(Model model){
-        Usuario usuario = new Usuario();
-        model.addAttribute("usuarioHtml", usuario);
         model.addAttribute("title", "Registro de Usuario");
         return "registro2";
     }
     @PostMapping("/crear")
     public String crearUsuario(@ModelAttribute Usuario usuario){
         usuario.setFechaCreacion(LocalDate.now());
-        objUsuarioService.crearUsuario(usuario);
-        return "redirect:/usuario";
+        Usuario usuarioActualizar = objUsuarioService.crearUsuario(usuario);
+
+        if (usuarioActualizar == null){
+            return "redirect:/usuario";
+        }
+            return "registro";
+
     }
     @PostMapping("/crear2")
     public String crearUsuario2(@ModelAttribute Usuario usuario){

@@ -22,7 +22,7 @@ public class Trabajador {
     private String apellido1;
     @Column(length = 100)
     private String apellido2;
-    @Column(columnDefinition = "text(500)")
+    @Column(length = 100)
     private String email;
     //ID institucionPrevension
     @ManyToOne(optional = false,fetch = FetchType.EAGER)

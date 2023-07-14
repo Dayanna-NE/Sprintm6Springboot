@@ -16,7 +16,14 @@ public class UsuarioImpl implements IUsuarioService {
 
     @Override
     public Usuario crearUsuario(Usuario usuario) {
-        return objUsuarioRepo.save(usuario);
+        System.out.println("Desde el Usuario service1 "+usuario.getNombre() );
+        Usuario usu = objUsuarioRepo.findByRun(usuario.getRun());
+
+        if (usu == null) {
+            objUsuarioRepo.save(usuario);
+            return usu;
+        }
+        return usu;
     }
 
     @Override
@@ -27,7 +34,7 @@ public class UsuarioImpl implements IUsuarioService {
     @Override
     public Usuario buscarUsuarioId(int idUsuario) {
         Usuario usu =  objUsuarioRepo.findById(idUsuario).orElseThrow(()->new NoSuchElementException("No usuario con el id "+idUsuario));
-        System.out.printf(" Clave Usuario aqui <<<<<<<<<"+usu.getClave());
+
         return usu;
     }
 
