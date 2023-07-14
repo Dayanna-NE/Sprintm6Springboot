@@ -22,32 +22,34 @@ public class UsuarioController {
         model.addAttribute("usuariosHtml",usuarios);
         return "listarUsuario";
     }
-    @GetMapping("/formularioCrear")
+    @GetMapping("/crear")
     public String enviarCrear(Model model){
         Usuario usuario = new Usuario();
-        usuario.setRun(null);
-        usuario.setTelefono(null);
         model.addAttribute("usuarioHtml", usuario);
         model.addAttribute("title", "Registro de Usuario");
         return "registro";
     }
-    @GetMapping("/formularioCrear2")
+    @GetMapping("/crear2")
     public String enviarCrear2(Model model){
         Usuario usuario = new Usuario();
-        usuario.setRun(null);
-        usuario.setTelefono(null);
         model.addAttribute("usuarioHtml", usuario);
         model.addAttribute("title", "Registro de Usuario");
         return "registro2";
     }
-    @GetMapping("/crear")
+    @PostMapping("/crear")
     public String crearUsuario(@ModelAttribute Usuario usuario){
         usuario.setFechaCreacion(LocalDate.now());
         objUsuarioService.crearUsuario(usuario);
         return "redirect:/usuario";
     }
+    @PostMapping("/crear2")
+    public String crearUsuario2(@ModelAttribute Usuario usuario){
+        usuario.setFechaCreacion(LocalDate.now());
+        objUsuarioService.crearUsuario(usuario);
+        return "redirect:/";
+    }
 
-    @GetMapping("/editar/{idUsuario}")
+    @PostMapping("/editar/{idUsuario}")
     public String mostrarFormularioEditarUsuario(@PathVariable int idUsuario, Model model){
         Usuario usuarioQueEditaremos = objUsuarioService.buscarUsuarioId(idUsuario);
         model.addAttribute("title","Editar Usuario");
