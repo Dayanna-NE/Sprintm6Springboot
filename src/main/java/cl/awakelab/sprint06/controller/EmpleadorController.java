@@ -1,15 +1,13 @@
 package cl.awakelab.sprint06.controller;
 
 import cl.awakelab.sprint06.entity.Empleador;
+import cl.awakelab.sprint06.entity.Trabajador;
 import cl.awakelab.sprint06.entity.Usuario;
 import cl.awakelab.sprint06.service.IEmpleadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -45,8 +43,20 @@ public class EmpleadorController {
         return "redirect:/empleador";
     }
 
+    @GetMapping("/editar")
+    public String editarEmpleador(Model model){
+        //model.getAttribute();
+        return "pam";
+    }
 
 
+    @PostMapping("/editar/{idEmpleador}")
+    public String mostrarFormularioEditarUsuario(@PathVariable int idEmpleador, Model model){
+        Empleador empleadorQueEditaremos = objEmpleadorService.buscarEmpleador(idEmpleador);
+        model.addAttribute("title","Editar Trabajador");
+        model.addAttribute("trabajadorHtml",empleadorQueEditaremos);
+        return "editarTrabajador";
+    }
 
 
 }
