@@ -2,15 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head th:replace="plantillas/base :: head">
 <body>
-<header th:replace="plantillas/base2 :: header"> </header>
+<div th:if="${base==1}">
+  <header th:replace="plantillas/base :: header"> </header>
+</div>
+<div th:if="${base==2}">
+  <header th:replace="plantillas/base2 :: header"> </header>
+</div>
 <h1 class="text-center mt-4">Registro de Usuario</h1>
 <hr>
 <section class="formulario mb-5">
-<form th:action="@{/usuario/crear}" method="post" >
+
+<form th:action="@{/usuario/crear/{base}(base=${base})}" method="post" >
 
   <div class="mb-3">
     <label for="run" class="form-label">RUN</label>
-    <input  type="number" class="form-control" name="run" id="run" placeholder="Ingrese RUN" required>
+    <input  type="number" class="form-control is-valid" name="run" id="run" placeholder="Ingrese RUN" required>
   </div>
   <div class="mb-3">
     <label for="nombre" class="form-label">Nombre</label>

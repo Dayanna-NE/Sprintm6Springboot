@@ -13,7 +13,6 @@ import java.util.NoSuchElementException;
 public class UsuarioImpl implements IUsuarioService {
     @Autowired
     IUsuarioRepository objUsuarioRepo;
-
     @Override
     public Usuario crearUsuario(Usuario usuario) {
         System.out.println("Desde el Usuario service1 "+usuario.getNombre() );
@@ -34,8 +33,8 @@ public class UsuarioImpl implements IUsuarioService {
     @Override
     public Usuario buscarUsuarioId(int idUsuario) {
         Usuario usu =  objUsuarioRepo.findById(idUsuario).orElseThrow(()->new NoSuchElementException("No usuario con el id "+idUsuario));
-
         return usu;
+
     }
 
     @Override
