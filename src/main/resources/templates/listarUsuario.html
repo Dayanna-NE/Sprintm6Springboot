@@ -10,7 +10,7 @@
 <h1 class="text-center mt-4">Usuarios</h1>
 <div class="btnRegistrar mb-3">
     <a th:href="@{/usuario/crear/2}">
-    <button type="submit" class="btn btn-primary mt-3 w-50">Agregar Usuario</button>
+        <button type="submit" class="btn btn-primary mt-3 w-50">Agregar Usuario</button>
     </a>
 </div>
 <section >
@@ -27,16 +27,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="usuario: ${usuariosHtml}">
-            <td th:text="${usuario.idUsuario}"></td>
+        <tr th:each="usuario, iterStat: ${usuariosHtml}"
+            th:if="${usuario.perfil.getIdPerfil() != 1}">
+            <th th:text="${usuario.idUsuario}"></th>
             <td th:text="${usuario.run}"></td>
             <td th:text="${usuario.nombre}"></td>
             <td th:text="${usuario.apellido1 +' '+ usuario.apellido2}"></td>
             <td th:text="${usuario.email}"></td>
-
-            <td th:if="${usuario.perfil.idPerfil==1}">Administrativo</td>
-            <td th:if="${usuario.perfil.idPerfil==2}">Contador</td>
-            <td th:if="${usuario.perfil.idPerfil==3}">Empleador</td>
+            <td th:if="${usuario.perfil.idPerfil == 2}">Contador</td>
+            <td th:if="${usuario.perfil.idPerfil == 3}">Empleador</td>
             <td class="text-center">
                 <!-- Dos formas de enviar el id XD-->
                 <a th:href="@{/usuario/editar/{idUsuario}(idUsuario=${usuario.idUsuario})}" class="m-2">
@@ -49,7 +48,6 @@
         </tr>
         </tbody>
     </table>
-
 </section>
 
 <footer th:replace="plantillas/base :: footer"></footer>
