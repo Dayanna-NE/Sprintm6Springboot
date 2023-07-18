@@ -6,7 +6,7 @@
 <h1 class="text-center mt-4">Registro de Empleador</h1>
 <hr>
 <section class="formulario mb-5">
-  <form th:action="@{/empleador/crear}" method="post" >
+  <form th:action="@{/empleador/crear}" method="post" class="was-validated" >
 
     <div class="mb-3">
       <label for="run" class="form-label">RUN</label>
@@ -25,19 +25,19 @@
       <input type="text" name="apellido2" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)" >
     </div>
     <div class="mb-3">
-      <label for="direccion" class="form-label">Dirección</label>
-      <input type="text" class="form-control" id="direccion" placeholder="Ingrese Dirección"  value=""  >
+      <label for="direccion" class="form-label">Dirección (Opcional)</label>
+      <input type="text" class="form-control" id="direccion" placeholder="Ingrese Dirección">
     </div>
     <div class="mb-3">
-      <label for="email" class="form-label">Correo Electronico</label>
+      <label for="email" class="form-label">Correo Electronico (Opcional)</label>
       <input  type="email" name="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
     </div>
     <div class="mb-3">
-      <label for="telefono" class="form-label">telefono</label>
+      <label for="telefono" class="form-label">Telefono (Opcional)</label>
       <input  type="number" name="telefono" class="form-control" placeholder="Ingrese Teléfono" id="telefono">
     </div>
     <div class="btnRegistrar mb-3">
-      <button type="submit" class="btn btn-primary mt-3 w-50">Registrar</button>
+      <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Registrar Empleador</button>
     </div>
   </form>
 </section>

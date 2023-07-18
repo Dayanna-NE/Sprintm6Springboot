@@ -28,12 +28,12 @@ public class LoginController {
             if (usuarioLogin != null){
 
                     model.addAttribute("mensaje","Usuario "+usuarioLogin.getNombre()+" ingreso correctamente ~(*o*)~");
-                    model.addAttribute("nombreUsuario", usuarioLogin.getNombre());
+                    model.addAttribute("usuarioHtml", usuarioLogin);
                     return "bienvenida";
 
             }
         }
-        model.addAttribute("mensaje","EL USUARIO:"+usuario.getRun()+" O CONTRASEÑA: "+usuario.getClave()+" QUE HA INGRESADO NO EXISTE <(-.-)>");
+        model.addAttribute("mensaje","EL USUARIO O CONTRASEÑA QUE HA INGRESADO NO EXISTE <(-.-)>");
         model.addAttribute("usuarioHtml",usuario);
         return "login";
     }

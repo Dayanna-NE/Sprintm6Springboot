@@ -10,7 +10,7 @@
 <h1 class="text-center mt-4">Empleadores</h1>
     <div class="btnRegistrar mb-3">
       <a th:href="@{/empleador/crear}">
-      <button type="submit" class="btn btn-primary mt-3 w-50">Agregar Empleador</button>
+      <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Agregar Empleador</button>
       </a>
     </div>
     <section >
@@ -26,17 +26,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="empleado: ${empleadoresHtml}">
-          <th th:text="${empleado.getIdEmpleador()}"></th>
-          <td th:text="${empleado.getRun()}"></td>
-          <td th:text="${empleado.getNombre()}"></td>
-          <td th:text="${empleado.getApellido1()+' '+empleado.getApellido2()}" ></td>
-          <td th:text="${empleado.getEmail()}"></td>
+        <tr th:each="empleador: ${empleadoresHtml}">
+          <th th:text="${empleador.getIdEmpleador()}"></th>
+          <td th:text="${empleador.getRun()}"></td>
+          <td th:text="${empleador.getNombre()}"></td>
+          <td th:text="${empleador.getApellido1()+' '+empleador.getApellido2()}" ></td>
+          <td th:text="${empleador.getEmail()}"></td>
           <td class="text-center">
-            <a href="#" class="m-2">
+            <a th:href="@{/empleador/editar/{idEmpleador}(idEmpleador=${empleador.idEmpleador})}" class="m-2">
               <i class="fa-sharp fa-solid fa-pen-to-square"></i>
             </a>
-            <a href="#" class="m-2">
+            <a th:href="@{/empleador/eliminar/{idEmpleador}(idEmpleador=${empleador.idEmpleador})}" class="m-2">
               <i class="fas fa-trash"></i>
             </a>
           </td>

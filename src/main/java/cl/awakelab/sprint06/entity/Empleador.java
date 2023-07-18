@@ -33,7 +33,7 @@ public class Empleador {
     private Usuario usuario;
     //Fin id usuario
     @Column(columnDefinition = "bigint")
-    private long telefono;
+    private Long telefono;
 
     //emlazamos con trabajador Muchos a muchos
     @ManyToMany

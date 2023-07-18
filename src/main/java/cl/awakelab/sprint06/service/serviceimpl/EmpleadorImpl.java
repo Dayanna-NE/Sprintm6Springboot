@@ -37,6 +37,6 @@ public class EmpleadorImpl implements IEmpleadorService {
 
     @Override
     public void eliminarEmpleador(int idEmpleador) {
-
+        objEmpleadorRepo.deleteById(idEmpleador);
     }
 }

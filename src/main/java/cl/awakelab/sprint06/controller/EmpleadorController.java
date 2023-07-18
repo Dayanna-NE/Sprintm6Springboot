@@ -29,7 +29,7 @@ public class EmpleadorController {
     }
 
     @GetMapping("/crear")
-    public String crearEmpleador(Model model){
+    public String mostrarFormularioCrearEmpleador(Model model){
         model.addAttribute("title","Registro Empleador");
         return "registrarEmpleador";
     }
@@ -43,19 +43,24 @@ public class EmpleadorController {
         return "redirect:/empleador";
     }
 
-    @GetMapping("/editar")
-    public String editarEmpleador(Model model){
-        //model.getAttribute();
-        return "pam";
+    @GetMapping("/editar/{idEmpleador}")
+    public String mostrarFormularioEditarEmpleador(Model model,@PathVariable int idEmpleador){
+        Empleador empleador = objEmpleadorService.buscarEmpleador(idEmpleador);
+        model.addAttribute("title","Editar Empleador");
+        model.addAttribute("empleadorHtml",empleador);
+        return "editarEmpleador";
     }
 
 
-    @PostMapping("/editar/{idEmpleador}")
-    public String mostrarFormularioEditarUsuario(@PathVariable int idEmpleador, Model model){
-        Empleador empleadorQueEditaremos = objEmpleadorService.buscarEmpleador(idEmpleador);
-        model.addAttribute("title","Editar Trabajador");
-        model.addAttribute("trabajadorHtml",empleadorQueEditaremos);
-        return "editarTrabajador";
+    @PostMapping("/editar")
+    public String editarEmpleador(@ModelAttribute Empleador empleador, Model model){
+        objEmpleadorService.actualizarEmpleador(empleador);
+        return "redirect:/empleador";
+    }
+    @GetMapping("/eliminar/{idEmpleador}")
+    public String eliminarEmpleador(@PathVariable int idEmpleador){
+        objEmpleadorService.eliminarEmpleador(idEmpleador);
+        return "redirect:/empleador";
     }
 
 
