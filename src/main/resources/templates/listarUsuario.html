@@ -27,10 +27,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="usuario, iterStat: ${usuariosHtml}"
+        <tr th:each="usuario: ${usuariosHtml}"
             th:if="${usuario.perfil.getIdPerfil() != 1}">
             <th th:text="${usuario.idUsuario}"></th>
-            <td th:text="${usuario.run}"></td>
+            <td id="runTd" th:text="${usuario.run}"></td>
             <td th:text="${usuario.nombre}"></td>
             <td th:text="${usuario.apellido1 +' '+ usuario.apellido2}"></td>
             <td th:text="${usuario.email}"></td>
