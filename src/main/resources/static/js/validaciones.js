@@ -101,6 +101,7 @@ $(document).ready(function() {
         controlarLongitudCaracteres("#run", 8);
         controlarSoloNumero("#run");
     });
+
     $('#nombre').on('input',function (){
        validarSoloTexto('#nombre')
     });
@@ -110,4 +111,5 @@ $(document).ready(function() {
     $('#apellido2').on('input',function (){
         validarSoloTexto('#apellido2')
     });
+
 });
