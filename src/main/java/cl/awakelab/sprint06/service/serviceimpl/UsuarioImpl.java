@@ -6,6 +6,7 @@ import cl.awakelab.sprint06.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -19,6 +20,7 @@ public class UsuarioImpl implements IUsuarioService {
         Usuario usu = objUsuarioRepo.findByRun(usuario.getRun());
 
         if (usu == null) {
+            usuario.setFechaCreacion(LocalDate.now());
             objUsuarioRepo.save(usuario);
             return usu;
         }

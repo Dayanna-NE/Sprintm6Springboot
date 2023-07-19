@@ -24,18 +24,20 @@ public class UsuarioController {
     }
     @GetMapping("/crear/{base}")
     public String enviarCrear(Model model,@PathVariable int base){
+        Usuario usuarioCrear = new Usuario();
         model.addAttribute(base);
+        model.addAttribute("usuarioHtml",usuarioCrear);
         model.addAttribute("title", "Registro de Usuario");
         return "registro";
     }
 
     @PostMapping("/crear/{base}")
     public String crearUsuario(@ModelAttribute Usuario usuario,@PathVariable int base,Model model){
-        usuario.setFechaCreacion(LocalDate.now());
-        Usuario usuarioActualizar = objUsuarioService.crearUsuario(usuario);
-        if (usuarioActualizar == null){
+        Usuario usuarioVerificarRut = objUsuarioService.crearUsuario(usuario);
+        if (usuarioVerificarRut == null){
             return "redirect:/usuario";
         }
+            model.addAttribute("usuarioHtml",usuario);
             model.addAttribute("base",base);
             return "registro";
     }
