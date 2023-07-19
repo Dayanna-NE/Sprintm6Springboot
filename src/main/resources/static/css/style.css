@@ -66,3 +66,7 @@ footer {
     text-align: left;
     margin-left: 10px;
 }
+/* ----------------Data table ----------------------*/
+#lista thead th {
+    text-align: center;
+}

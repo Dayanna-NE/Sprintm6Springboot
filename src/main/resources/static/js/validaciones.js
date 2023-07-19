@@ -14,6 +14,12 @@ function controlarSoloNumero(idInput ='#run') {
     }
 }
 
+
+// Validadion de solo letras con ÑñéÉ...
+function validarSoloTexto(idInput){
+    var input = $(idInput).val();
+    $(idInput).val(input.replace(/[^A-Za-záéíóúñÑÁÉÍÓÚ ]+/g,''));
+}
 function codigoVerificador() {
     $("#runTd").each(function (){
         var run = $('#runTd').text();
@@ -86,11 +92,22 @@ function codigoVerificador() {
 }
 
 
+
+
+//llamado funciones
 $(document).ready(function() {
     // Asignar el evento input al input RUN
     $('#run').on('input', function() {
         controlarLongitudCaracteres("#run", 8);
         controlarSoloNumero("#run");
     });
-
+    $('#nombre').on('input',function (){
+       validarSoloTexto('#nombre')
+    });
+    $('#apellido1').on('input',function (){
+        validarSoloTexto('#apellido1')
+    });
+    $('#apellido2').on('input',function (){
+        validarSoloTexto('#apellido2')
+    });
 });
