@@ -92,5 +92,4 @@ $(document).ready(function() {
         controlarLongitudCaracteres("#run", 8);
         controlarSoloNumero("#run");
     });
-
 });

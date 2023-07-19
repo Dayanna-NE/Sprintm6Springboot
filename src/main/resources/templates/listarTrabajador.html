@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="plantillas/base :: head">
+
+    <title>Lista de Trabajadores</title>
 </head>
 <body>
-$END$
+
+<header th:replace="plantillas/base2 :: header"> </header>
+<h1 class="text-center mt-4">Trabajadores</h1>
+<div class="btnRegistrar mb-3">
+    <a th:href="@{/trabajadores/crear/2}">
+        <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Agregar Trabajador</button>
+    </a>
+</div>
+<section >
+    <table id="lista" class="w-75">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>RUN</th>
+            <th>Nombre</th>
+            <th>Apellido Materno</th>
+            <th>Email</th>
+            <th>Perfil</th>
+            <th data-orderable="false">Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario, iterStat: ${trabajadorHtml}"
+            th:if="${trabajador.perfil.getIdPerfil() != 1}">
+            <th th:text="${trabajador.idUsuario}"></th>
+            <td th:text="${trabajador.run}"></td>
+            <td th:text="${trabajador.nombre}"></td>
+            <td th:text="${trabajador.apellido1 +' '+ trabajador.apellido2}"></td>
+            <td th:text="${trabajador.email}"></td>
+            <td th:if="${trabajador.perfil.idPerfil == 2}">Contador</td>
+            <td th:if="${trabajador.perfil.idPerfil == 3}">Empleador</td>
+            <td class="text-center">
+                <!-- Dos formas de enviar el id XD-->
+                <a th:href="@{/trabajador/editar/{idUsuario}(idUsuario=${trabajador.idUsuario})}" class="m-2">
+                    <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                </a>
+                <a th:href="@{/trabajador/eliminar/}+${trabajador.idUsuario}" class="m-2">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<footer th:replace="plantillas/base :: footer"></footer>
+<section th:replace="plantillas/base :: script"></section>
 </body>
 </html>

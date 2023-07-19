@@ -17,6 +17,7 @@ public class TrabajadorController {
     @GetMapping
     public String listarTrabajador(Model model){
         model.addAttribute("title", "Lista de Trabajadores");
+
         return "listarTrabajador";
     }
 
