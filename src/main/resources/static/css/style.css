@@ -31,7 +31,7 @@ body{
     width: 50%;
     margin: 0 auto;
 }
-.btnRegistrar{
+.btnRegistrar, .btnEditar{
     text-align: center;
 }
 .Logotipo{

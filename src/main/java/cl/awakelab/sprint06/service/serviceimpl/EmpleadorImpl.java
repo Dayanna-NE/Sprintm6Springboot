@@ -39,4 +39,14 @@ public class EmpleadorImpl implements IEmpleadorService {
     public void eliminarEmpleador(int idEmpleador) {
         objEmpleadorRepo.deleteById(idEmpleador);
     }
+
+    @Override
+    public boolean buscarEmpleadorRun(int rutEmpleador) {
+        Empleador empleador = objEmpleadorRepo.findByRun(rutEmpleador);
+        if (empleador != null){
+            return true;
+        }
+        return false;
+    }
+
 }

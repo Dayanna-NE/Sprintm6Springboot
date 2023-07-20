@@ -30,17 +30,27 @@ public class EmpleadorController {
 
     @GetMapping("/crear")
     public String mostrarFormularioCrearEmpleador(Model model){
+        Empleador empleador= new Empleador();
         model.addAttribute("title","Registro Empleador");
+        model.addAttribute("empleadorHtml",empleador);
         return "registrarEmpleador";
     }
 
     @PostMapping("/crear")
-    public String crearEmpleador(@ModelAttribute Empleador empleador){
+    public String crearEmpleador(@ModelAttribute Empleador empleador, Model model){
         Usuario usuario = new Usuario();
         usuario.setIdUsuario(1);
         empleador.setUsuario(usuario);
-        objEmpleadorService.cerarEmpleador(empleador);
+        //validamos RUN
+        if (objEmpleadorService.buscarEmpleadorRun(empleador.getRun())){ //Si existe
+            model.addAttribute("title","Registro Usuario");
+            model.addAttribute("empleadorHtml",empleador);
+            return "registrarEmpleador";
+        }
+        //si no existe el run
+        objEmpleadorService.cerarEmpleador(empleador); //Creado correctamente
         return "redirect:/empleador";
+
     }
 
     @GetMapping("/editar/{idEmpleador}")

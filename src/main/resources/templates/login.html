@@ -11,9 +11,11 @@
     <section class="d-flex justify-content-center mt-5 mb-5">
 <form th:action="@{/login}" method="post">
     <div class="mb-3">
-        <label for="run" class="form-label">RUN</label>
-        <input type="number" class="form-control" id="run" placeholder="Ingrese RUN" pattern="[0-9]+" aria-describedby="RUNhelp" name="run" required>
-        <div id="RUNhelp" class="form-text">Ingrese su RUN sin puntos ni guión</div>
+        <label for="runIni" class="form-label">RUN</label>
+        <input type="number" class="form-control" id="runIni" placeholder="Ingrese RUN" pattern="[0-9]+" aria-describedby="RUNhelp" name="run" required>
+        <div class="start-50 text-primary-emphasis fs-6">
+            <i class="fas fa-plus" ></i> Ingrese los números del RUN, sin codigo verificador.
+        </div>
     </div>
     <div class="mb-3">
         <label for="clave" class="form-label">Contraseña</label>
@@ -24,7 +26,7 @@
     </div>
     <button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
     <div class="d-flex justify-content-start mt-3" >
-        <a href="/usuario/formularioCrear">Registrarse</a>
+        <a th:href="@{/usuario/crear/1}">Registrarse</a>
     </div>
 </form>
 

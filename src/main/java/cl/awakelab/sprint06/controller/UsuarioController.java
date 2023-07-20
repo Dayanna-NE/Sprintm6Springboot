@@ -35,8 +35,13 @@ public class UsuarioController {
     public String crearUsuario(@ModelAttribute Usuario usuario,@PathVariable int base,Model model){
         Usuario usuarioVerificarRut = objUsuarioService.crearUsuario(usuario);
         if (usuarioVerificarRut == null){
-            return "redirect:/usuario";
+            if (base==2) {
+                return "redirect:/usuario";
+            }else{
+                return "redirect:/";
+            }
         }
+            model.addAttribute("title", "Registro de Usuario");
             model.addAttribute("usuarioHtml",usuario);
             model.addAttribute("base",base);
             return "registro";

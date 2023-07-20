@@ -16,7 +16,7 @@ public class Empleador {
     @Column(name = "id_empleador",nullable = false)
     private int idEmpleador;
     @Column(unique = true,nullable = false)
-    private int run;
+    private Integer run;
     @Column(length = 100,nullable = false)
     private String nombre;
     @Column(name = "apellido_1",length = 100,nullable = false)

@@ -33,12 +33,12 @@
 //Funcion para formatear RUN
  function formatearRun(data) {
 
-  var run = data;
-  var caracter;
-  var runInvertido = "";
-  var multiplicador = 1;
-  var resultado = 0;
-  var formatearARun = "";
+  let run = data;
+  let caracter;
+  let runInvertido = "";
+  let multiplicador = 1;
+  let resultado = 0;
+  let formatearARun = "";
   for (let i = run.length - 1; i >= 0; i--) {
    caracter = run.charAt(i);
    runInvertido += caracter;
@@ -73,7 +73,7 @@
 
    }
   }
-  var resultadoTotal = resultado;
+  let resultadoTotal = resultado;
   formatearARun = formatearARun + "-";
   resultado = Math.floor(resultado / 11);
   resultado = resultado * 11;

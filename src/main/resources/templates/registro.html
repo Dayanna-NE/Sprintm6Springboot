@@ -11,17 +11,18 @@
 <h1 class="text-center mt-4">Registro de Usuario</h1>
 <hr>
 <section class="formulario mb-5">
-
 <form  th:action="@{/usuario/crear/{base}(base=${base})}" method="post" class="needs-validation was-validated"  th:object="${usuarioHtml}">
+
+
 
   <div class="mb-3 position-relative">
     <label for="run" class="form-label">RUN</label>
-    <input  type="text" class="form-control is-valid" minlength="7" maxlength="8" name="run" id="run" placeholder="Ingrese RUN" required >
+    <input  type="text" class="form-control is-valid" minlength="7" maxlength="8" name="run" id="run" placeholder="Ingrese RUN ejemplo: 12345678" required >
     <div class="invalid-tooltip end-0 rounded-start-pill" th:if="*{run != null}">
       El RUN esta en uso.
     </div>
     <div class="start-50 text-primary-emphasis fs-6">
-      <i class="fas fa-plus" ></i> Ingrese los números de su RUN, sin codigo verificador.
+      <i class="fas fa-plus" ></i> Ingrese los números del RUN, sin codigo verificador.
     </div>
   </div>
   <div class="mb-3 position-relative">
@@ -41,7 +42,7 @@
   </div>
   <div class="mb-3 position-relative">
     <label for="telefono" class="form-label">Teléfono (Opcional)</label>
-    <input th:value="*{telefono}"  type="number" class="form-control" name="telefono" id="telefono" placeholder="Ingrese Teléfono"  >
+    <input th:value="*{telefono}"  type="text" class="form-control" name="telefono" id="telefono" placeholder="Ingrese Teléfono"  >
     <div class="valid-tooltip end-0 rounded-start-pill">
       (Opcional)
     </div>
@@ -49,7 +50,7 @@
   <div class="mb-3 position-relative">
     <label for="email" class="form-label">Correo Electronico</label>
     <div class="input-group has-validation">
-      <span class="input-group-text" >@</span>
+      <span class="input-group-text bg-primary text-white" >@</span>
       <input th:value="*{email}"  type="email" class="form-control" name="email" id="email" aria-describedby="validationTooltipUsernamePrepend" placeholder="Ingrese Correo electronico" required >
     </div>
   </div>
@@ -57,19 +58,18 @@
     <label for="clave" class="form-label">Contraseña</label>
     <input th:value="*{clave}"  type="password"  class="form-control" placeholder="Ingrese Contraseña" name="clave" id="clave" required>
   </div>
-  <div class="text-center m-5">
-    <div class="mb-3 form-check-inline pe-5" >
+  <div class="text-center mb-3">
+    <div class=" form-check-inline  pe-5" >
       <input th:field="*{perfil.idPerfil}"  class="form-check-input" type="radio" id="option3" name="perfil" th:value="3" required>
       <label  for="option3">Empleador</label><br>
     </div>
-    <div class="mb-3 form-check-inline ps-5" >
+    <div class="form-check-inline  ps-5" >
       <input th:field="*{perfil.idPerfil}" class="form-check-input" type="radio" id="option2" name="perfil" th:value="2" required>
       <label   for="option2">Contador</label><br>
     </div>
-
   </div>
   <div class="btnRegistrar mb-3">
-    <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Registrar Usuario</button>
+    <button type="submit" class="btn btn-primary  w-50"><i class="fas fa-plus" ></i> Registrar Usuario</button>
   </div>
 </form>
 </section>

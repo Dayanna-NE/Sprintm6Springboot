@@ -16,9 +16,7 @@ public class UsuarioImpl implements IUsuarioService {
     IUsuarioRepository objUsuarioRepo;
     @Override
     public Usuario crearUsuario(Usuario usuario) {
-        System.out.println("Desde el Usuario service1 "+usuario.getNombre() );
         Usuario usu = objUsuarioRepo.findByRun(usuario.getRun());
-
         if (usu == null) {
             usuario.setFechaCreacion(LocalDate.now());
             objUsuarioRepo.save(usuario);

@@ -4,6 +4,7 @@
 <body>
 <header th:replace="plantillas/base2 :: header"></header>
 <h1 class="text-center mt-4">Editar Usuario</h1>
+<hr>
 <section class="formulario mb-5">
     <form th:action="@{/usuario/editar}" method="post" th:object="${usuarioHtml}" class="was-validated">
         <input type="hidden" th:field="*{idUsuario}" />

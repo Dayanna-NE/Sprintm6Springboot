@@ -5,7 +5,7 @@
 <header th:replace="plantillas/base2 :: header"></header>
 <h1 class="text-center mt-4">Editar Empleador</h1>
 <section class="formulario mb-5">
-    <form th:action="@{/empleador/editar}" method="post" th:object="${empleadorHtml}" class="was-validated">
+    <form th:action="@{/empleador/editar}" method="post" th:object="${empleadorHtml}" class="needs-validation was-validated">
         <input type="hidden" th:field="*{idEmpleador}" />
         <input type="hidden" th:field="*{run}" />
         <input type="hidden" th:field="*{usuario.idUsuario}" />
@@ -31,10 +31,10 @@
         </div>
         <div class="mb-3">
             <label for="telefono" class="form-label">Teléfono (Opcional)</label>
-            <input th:field="*{telefono}" type="number" class="form-control" id="telefono" placeholder="Ingrese Teléfono">
+            <input th:field="*{telefono}" type="text" class="form-control" id="telefono" placeholder="Ingrese Teléfono">
         </div>
-        <div class="btnEditar mb-3">
-            <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fa-solid fa-pen-to-square"></i>  Guardar Empleador</button>
+        <div class="btnEditar mb-3 mt-3">
+            <button type="submit" class="btn btn-primary  w-50"><i class="fa-solid fa-pen-to-square"></i>  Guardar Cambios</button>
         </div>
     </form>
 </section>

@@ -10,4 +10,6 @@ public interface IEmpleadorService {
     Empleador buscarEmpleador(int idEmpleador);
     Empleador actualizarEmpleador(Empleador empleadorActualizar);
     void eliminarEmpleador(int idEmpleador);
+    boolean buscarEmpleadorRun(int rutEmpleador);
+
 }
