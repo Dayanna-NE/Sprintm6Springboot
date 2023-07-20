@@ -12,7 +12,7 @@ public class InstitucionSalud {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_inst_salud",nullable = false)
-    private int idInstSalud;
+    private Integer idInstSalud;
     @Column(nullable = false, length = 50)
     private String descripcion;
     @Column(name = "proc_dcto", nullable = false,columnDefinition = "float")

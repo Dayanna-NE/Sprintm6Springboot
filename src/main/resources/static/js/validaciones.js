@@ -12,12 +12,9 @@ function controlarLongitudCaracteres(idInput='', logitudMax=12, LongitudMin=0){
     }
 }
 
-function controlarSoloNumero(idInput ='#run') {
+function controlarSoloNumero(idInput='') {
     let input = $(idInput).val();
-    let regex = /^\d*$/;
-    if (!regex.test(input)) {
-        $(idInput).val( input.replace(/\D/g, ''));
-    }
+    $(idInput).val( input.replace(/[^0-9]+/g, ''));
 }
 
 
@@ -26,10 +23,6 @@ function validarSoloTexto(idInput){
     let input = $(idInput).val();
     $(idInput).val(input.replace(/[^A-Za-záéíóúñÑÁÉÍÓÚ ]+/g,''));
 }
-
-
-
-
 
 //llamado funciones
 $(document).ready(function() {
@@ -40,7 +33,7 @@ $(document).ready(function() {
     });
     $('#telefono').on('input', function() {
         controlarSoloNumero("#telefono");
-        controlarLongitudCaracteres("#telefono", 9);
+        controlarLongitudCaracteres("#telefono", 12,9);
     });
     $('#nombre').on('input',function (){
        validarSoloTexto('#nombre')

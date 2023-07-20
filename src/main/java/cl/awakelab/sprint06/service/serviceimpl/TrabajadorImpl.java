@@ -39,4 +39,15 @@ public class TrabajadorImpl implements ITrabajadorService {
     public void eliminarTrabajador(int idTrabajador) {
         objTrabajadorRepo.deleteById(idTrabajador);
     }
+
+    @Override
+    public boolean buscarTrabajadorRun(int runTrabajador) {
+        Trabajador trabajador = objTrabajadorRepo.findByRun(runTrabajador);
+        //buscando run
+        if (trabajador!=null){
+            return true;//encontro usuario con el run
+        }
+        return false;//no encontro usuario con el run
+    }
+
 }

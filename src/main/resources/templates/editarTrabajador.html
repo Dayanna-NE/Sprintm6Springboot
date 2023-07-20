@@ -1,40 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:replace="plantillas/base :: head"></head>
+<head th:replace="plantillas/base :: head">
 <body>
-<header th:replace="plantillas/base2 :: header"></header>
-<h1 class="text-center mt-4">Editar Trabajador</h1>
+<header th:replace="plantillas/base2 :: header"> </header>
+<h1 class="text-center mt-4">Registro de Trabajador</h1>
+<hr>
 <section class="formulario mb-5">
-    <form th:action="@{/trabajador/editar}" method="post" th:object="${trabajadorHtml}" class="was-validated">
-        <input type="hidden" th:field="*{idTrabajador}" />
+    <form th:action="@{/trabajador/editar}" method="post" class="needs-validation was-validated"  th:object="${trabajadorHtml}" >
         <input type="hidden" th:field="*{run}" />
-        <input type="hidden" th:field="*{usuario.idTrabajador}" />
+        <input type="hidden" th:field="*{idTrabajador}" />
+        <!--<input type="hidden" th:field="*{institucionPrevision}">
+        <input type="hidden" th:field="*{institucionSalud}">-->
+        <!----------------------------------nombre----------------------------------------------->
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
-            <input th:field="*{nombre}" type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
+            <input th:value="*{nombre}"  type="text" name="nombre" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
         </div>
+        <!----------------------------------apellido1----------------------------------------------->
         <div class="mb-3">
             <label for="apellido1" class="form-label">Apellido Paterno</label>
-            <input th:field="*{apellido1}" type="text" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
+            <input th:value="*{apellido1}" type="text" name="apellido1" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
         </div>
-        <div class="mb-3">
-            <label for="apellido2" class="form-label">Apellido Materno (Opcional)</label>
-            <input th:field="*{apellido2}" type="text" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno">
+        <!----------------------------------apellido2----------------------------------------------->
+        <div class="mb-3 position-relative">
+            <label  for="apellido2" class="form-label">Apellido Materno (Opcional)</label>
+            <input type="text" th:value="*{apellido2}" name="apellido2" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)" >
+            <div class="valid-tooltip end-0 rounded-start-pill">
+                (Opcional)
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Correo Electrónico (Opcional)</label>
-            <input th:field="*{email}" type="email" class="form-control" id="email" placeholder="Ingrese Correo Electrónico" >
+        <!----------------------------------email----------------------------------------------->
+        <div class="mb-3 position-relative">
+            <label for="email" class="form-label">Correo Electronico (Opcional)</label>
+            <input th:value="*{email}" type="email" name="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
+            <div class="valid-tooltip end-0 rounded-start-pill">
+                (Opcional)
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="direccion" class="form-label">Direccion (Opcional)</label>
-            <input th:field="*{direccion}" type="text" class="form-control" id="direccion" placeholder="Ingrese Direccion" >
+        <!----------------------------------Telefono----------------------------------------------->
+        <div class="mb-3 position-relative">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input th:value="*{telefono}" value="telefono"  type="text" name="telefono" class="form-control" placeholder="Ingrese Teléfono" id="telefono" required>
         </div>
-        <div class="mb-3">
-            <label for="telefono" class="form-label">Teléfono (Opcional)</label>
-            <input th:field="*{telefono}" type="number" class="form-control" id="telefono" placeholder="Ingrese Teléfono">
+        <div class="row g2 mb-5">
+            <!----------------------------------Salud----------------------------------------------->
+            <div class="col-md-6 position-relative">
+                    <label for="institucionSalud1" class="form-label">Institución de Salud</label>
+                    <select class="form-select is-valid" th:field="*{institucionSalud.idInstSalud}" name="institucionSalud" id="institucionSalud1" aria-describedby="institucionSaludAD" required>
+                        <option selected disabled value=""><--Selecione--></option>
+                        <th:block th:each="salud :${listaSaludHtml}">
+                            <option th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
+                        </th:block>
+                    </select>
+                <div id="institucionSaludAD" class="invalid-tooltip end-0 rounded-start-pill">
+                    Seleccione una opción.
+                </div>
+            </div>
+            <!----------------------------------AFP----------------------------------------------->
+            <div class="col-md-6 position-relative">
+
+                    <label for="institucionPrevision1" class="form-label">AFP</label>
+                    <select class="form-select is-valid" th:field="*{institucionPrevision.idInstPrevision}" name="institucionPrevision" id="institucionPrevision1" aria-describedby="institucionPrevisionAD" required   >
+                        <option selected disabled value=""><--Selecione--></option>
+                        <th:block th:each="prevision : ${ListaPrevisionHtml}">
+                            <option th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}">...</option>
+                        </th:block>
+                    </select>
+                <div id="institucionPrevisionAD" class="invalid-tooltip end-0 rounded-start-pill">
+                    Seleccione una opción.
+                </div>
+            </div>
         </div>
-        <div class="btnEditar mb-3">
-            <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fa-solid fa-pen-to-square"></i>  Guardar Empleador</button>
+        <!----------------------------------Botton----------------------------------------------->
+        <div class="btnRegistrar mb-3">
+            <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Registrar Empleador</button>
         </div>
     </form>
 </section>

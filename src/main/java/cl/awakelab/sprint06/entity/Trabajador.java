@@ -15,12 +15,12 @@ public class Trabajador {
     @Column(name = "id_trabajador",nullable = false)
     private int idTrabajador;
     @Column(nullable = false,unique = true)
-    private int run;
+    private Integer run;
     @Column(length = 100,nullable = false)
     private String nombre;
-    @Column(length = 100,nullable = false)
+    @Column(length = 100,nullable = false,name = "apellido_1")
     private String apellido1;
-    @Column(length = 100)
+    @Column(length = 100,name = "apellido_2")
     private String apellido2;
     @Column(length = 100)
     private String email;
@@ -35,7 +35,7 @@ public class Trabajador {
     private InstitucionSalud institucionSalud;
     //fin
     @Column(columnDefinition = "bigint")
-    private long telefono;
+    private Long telefono;
     //Conectando con Liquidacion
     @OneToMany(mappedBy = "trabajador",cascade = CascadeType.ALL)
     private List<Liquidacion> listarLiquidaciones;

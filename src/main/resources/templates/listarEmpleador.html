@@ -9,6 +9,9 @@
 </section>
 <h1 class="text-center mt-4">Lista de Empleadores</h1>
 <hr>
+<div th:unless="${#strings.isEmpty(mensaje)}">
+  <div class="alert alert-success ps-5 fs-4" th:text="${mensaje}"></div>
+</div>
     <div class="btnRegistrar mb-3">
       <a th:href="@{/empleador/crear}">
       <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Agregar Empleador</button>

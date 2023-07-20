@@ -12,7 +12,7 @@ public class InstitucionPrevision {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_inst_prevision",nullable = false)
-    private int idInstPrevision;
+    private Integer idInstPrevision;
     @Column(nullable = false,length = 50)
     private String descripcion;
     @Column(name = "porc_dcto", nullable = false, columnDefinition = "float")

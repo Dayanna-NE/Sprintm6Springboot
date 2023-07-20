@@ -41,8 +41,8 @@ public class EmpleadorImpl implements IEmpleadorService {
     }
 
     @Override
-    public boolean buscarEmpleadorRun(int rutEmpleador) {
-        Empleador empleador = objEmpleadorRepo.findByRun(rutEmpleador);
+    public boolean buscarEmpleadorRun(int runEmpleador) {
+        Empleador empleador = objEmpleadorRepo.findByRun(runEmpleador);
         if (empleador != null){
             return true;
         }

@@ -11,4 +11,5 @@ public interface ITrabajadorService {
     Trabajador buscarTrabajador(int idTrabajador);
     Trabajador actualizarTrabajador(Trabajador trabajadorActualizar);
     void eliminarTrabajador(int idTrabajador);
+    boolean buscarTrabajadorRun(int runTrabajador);
 }

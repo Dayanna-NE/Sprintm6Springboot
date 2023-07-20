@@ -8,46 +8,55 @@
 
 <header th:replace="plantillas/base2 :: header"> </header>
 <h1 class="text-center mt-4">Trabajadores</h1>
+<hr>
+<div th:unless="${#strings.isEmpty(mensaje)}">
+    <div class="alert alert-success ps-5 fs-4" th:text="${mensaje}"></div>
+</div>
 <div class="btnRegistrar mb-3">
-    <a th:href="@{/trabajadores/crear/2}">
-        <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Agregar Trabajador</button>
+    <a th:href="@{/trabajador/crear}">
+        <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i>  Agregar Trabajador</button>
     </a>
 </div>
-<section >
-    <table id="lista" class="w-75">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>RUN</th>
-            <th>Nombre</th>
-            <th>Apellido Materno</th>
-            <th>Email</th>
-            <th>Perfil</th>
-            <th data-orderable="false">Acción</th>
+<section class="pe-5 ps-5 pb-5 table-responsive">
+    <table id="lista" class="table table-bordered table-hover table-striped" >
+        <thead class="table-dark">
+        <th>ID</th>
+        <th>RUN</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Email</th>
+        <th data-orderable="false">Acción</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="usuario, iterStat: ${trabajadorHtml}"
-            th:if="${trabajador.perfil.getIdPerfil() != 1}">
-            <th th:text="${trabajador.idUsuario}"></th>
+        <tr th:each="trabajador : ${trabajadoresHtml}">
+            <th th:text="${trabajador.idTrabajador}"></th>
             <td th:text="${trabajador.run}"></td>
             <td th:text="${trabajador.nombre}"></td>
-            <td th:text="${trabajador.apellido1 +' '+ trabajador.apellido2}"></td>
+            <td th:text="${trabajador.apellido1+' '+trabajador.apellido2}" ></td>
             <td th:text="${trabajador.email}"></td>
-            <td th:if="${trabajador.perfil.idPerfil == 2}">Contador</td>
-            <td th:if="${trabajador.perfil.idPerfil == 3}">Empleador</td>
             <td class="text-center">
-                <!-- Dos formas de enviar el id XD-->
-                <a th:href="@{/trabajador/editar/{idUsuario}(idUsuario=${trabajador.idUsuario})}" class="m-2">
+                <a th:href="@{/trabajador/editar/{idTrabajador}(idTrabajador=${trabajador.idTrabajador})}" class="m-2">
                     <i class="fa-sharp fa-solid fa-pen-to-square"></i>
                 </a>
-                <a th:href="@{/trabajador/eliminar/}+${trabajador.idUsuario}" class="m-2">
+                <a th:href="@{/trabajador/eliminar/{idTrabajador}(idTrabajador=${trabajador.idTrabajador})}" class="m-2">
                     <i class="fas fa-trash"></i>
                 </a>
             </td>
         </tr>
         </tbody>
+        <tfoot class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>RUN</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Email</th>
+            <th>Acción</th>
+        </tr>
+        </tfoot>
     </table>
+
 </section>
 
 <footer th:replace="plantillas/base :: footer"></footer>

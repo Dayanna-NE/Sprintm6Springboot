@@ -2,8 +2,6 @@
 //Pedir que inicie mi tabla con Datatable
 //var table =new DataTable('#lista');
 
-
-
  $(document).ready(function() {
   //Llamo a la tabla que modificaré
   $('#lista').DataTable({
@@ -12,7 +10,7 @@
    },
    // Opciones de configuración de DataTables
    "columnDefs": [
-       // Modificar la columna del salario usando la opción "render"
+       // Modificar la columna selecionada (targets) con la opción "render"
     {
      "targets": 1, // Índice de la columna, 1 = RUN
      "render": function(data) {
@@ -78,6 +76,7 @@
   resultado = Math.floor(resultado / 11);
   resultado = resultado * 11;
   resultadoTotal = resultadoTotal - resultado;
+  resultadoTotal = 11 - resultadoTotal;
   switch (resultadoTotal) {
    case 10:
     formatearARun += "K";

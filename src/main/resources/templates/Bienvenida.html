@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head th:replace="plantillas/base :: head">
+
 <body>
 <header th:replace="plantillas/base2 :: header"> </header>
 <div th:unless="${#strings.isEmpty(mensaje)}">
@@ -8,8 +10,10 @@
 </div>
 <th:block th:object="${usuarioHtml}"></th:block>
 <section class="m-5 pt-5">
-  <h1 class="text-center mt-5" th:if="${usuarioHtml}!=null" th:text="Bienvenido+' ' +${usuarioHtml.getNombre()}"><i class="fa-solid fa-user"></i></h1>
-  <h1 class="text-center mt-5" th:if="${usuarioHtml}==null" th:text="Bienvenido "><span><i class="fa-solid fa-user"></i></span></h1>
+  <h1 class="text-center mt-5" th:if="${usuarioHtml}!=null" th:text="Bienvenido+' ' +${usuarioHtml.getNombre()}">
+    <i class="fa-solid fa-user"></i></h1>
+  <h1 class="text-center mt-5" th:if="${usuarioHtml}==null" th:text="Bienvenido "><span><i
+          class="fa-solid fa-user"></i></span></h1>
   <h2 class="text-center mt-4 mb-5">¿Qué deseas hacer?</h2>
   <div class="bienvenidaBotones container text-center">
     <div class="container text-center">
@@ -25,32 +29,32 @@
           </a>
         </div>
         <div class="col">
-          <a href="#" class="btn btn-success w-100">
+          <a href="/trabajador/crear" class="btn btn-success w-100">
             <div class="p-3 ">Crear Trabajador</div>
           </a>
         </div>
         <div class="col">
-          <a href="#" class="btn btn-dark w-100">
+          <a href="#" class="btn btn-dark w-100 ">
             <div class="p-3 ">Crear Liquidación</div>
           </a>
         </div>
         <div class="col">
-          <a th:href="@{/usuario}" class="btn btn-primary w-100 shadow">
+          <a th:href="@{/usuario}" class="btn btn-primary w-100 ">
             <div class="p-3">Ver y/o editar Usuarios</div>
           </a>
         </div>
         <div class="col">
-          <a href="/empleador" class="btn btn-secondary w-100 shadow">
+          <a href="/empleador" class="btn btn-secondary w-100 ">
             <div class="p-3">Ver y/o editar Empleador</div>
           </a>
         </div>
         <div class="col">
-          <a href="#" class="btn btn-success w-100 shadow " >
+          <a href="/trabajador" class="btn btn-success w-100  ">
             <div class="p-3 ">Ver y/o editar Trabajador</div>
           </a>
         </div>
         <div class="col">
-          <a href="#" class="btn btn-dark w-100 shadow">
+          <a href="#" class="btn btn-dark w-100 ">
             <div class="p-3">Ver y/o editar Liquidación</div>
           </a>
         </div>
@@ -67,4 +71,5 @@
 <footer th:replace="plantillas/base :: footer"></footer>
 <section th:replace="plantillas/base :: script"></section>
 </body>
+
 </html>
