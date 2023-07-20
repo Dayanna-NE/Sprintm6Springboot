@@ -8,7 +8,7 @@
 <section class="formulario mb-5">
   <form th:action="@{/empleador/crear}" method="post" class="needs-validation was-validated"  th:object="${empleadorHtml}" >
 
-
+    <!----------------------------------run----------------------------------------------->
     <div class="mb-3 position-relative">
       <label for="run" class="form-label">RUN</label>
       <input  type="text"  class="form-control is-valid" minlength="7" maxlength="8" name="run" id="run" placeholder="Ingrese RUN ejemplo: 12345678"  required >
@@ -19,14 +19,17 @@
         <i class="fas fa-plus" ></i> Ingrese los números del RUN, sin codigo verificador.
       </div>
     </div>
+    <!----------------------------------nombre----------------------------------------------->
     <div class="mb-3">
       <label for="nombre" class="form-label">Nombre</label>
       <input th:value="*{nombre}"  type="text" name="nombre" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
     </div>
+    <!----------------------------------Apellido 1----------------------------------------------->
     <div class="mb-3">
       <label for="apellido1" class="form-label">Apellido Paterno</label>
       <input th:value="*{apellido1}" type="text" name="apellido1" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
     </div>
+    <!----------------------------------Apellido 2----------------------------------------------->
     <div class="mb-3 position-relative">
       <label  for="apellido2" class="form-label">Apellido Materno (Opcional)</label>
       <input type="text" th:value="*{apellido2}" name="apellido2" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)" >
@@ -41,11 +44,15 @@
         (Opcional)
       </div>
     </div>
+    <!----------------------------------email----------------------------------------------->
     <div class="mb-3 position-relative">
       <label for="email" class="form-label">Correo Electronico (Opcional)</label>
-      <input th:value="*{email}" type="email" name="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
-      <div class="valid-tooltip end-0 rounded-start-pill">
-        (Opcional)
+      <div class="input-group has-validation">
+        <span class="input-group-text bg-primary text-white" >@</span>
+        <input th:value="*{email}" type="email" name="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
+        <div class="valid-tooltip end-0 rounded-start-pill">
+          (Opcional)
+        </div>
       </div>
     </div>
     <div class="mb-3 position-relative">

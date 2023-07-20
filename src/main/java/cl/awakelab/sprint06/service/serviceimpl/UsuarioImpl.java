@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -18,7 +19,7 @@ public class UsuarioImpl implements IUsuarioService {
     public Usuario crearUsuario(Usuario usuario) {
         Usuario usu = objUsuarioRepo.findByRun(usuario.getRun());
         if (usu == null) {
-            usuario.setFechaCreacion(LocalDate.now());
+            usuario.setFechaCreacion(LocalDateTime.now());
             objUsuarioRepo.save(usuario);
             return usu;
         }

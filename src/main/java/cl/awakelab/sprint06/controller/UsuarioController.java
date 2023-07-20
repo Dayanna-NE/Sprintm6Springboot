@@ -40,6 +40,7 @@ public class UsuarioController {
                 redirectAttributes.addFlashAttribute("mensaje","El usuario "+usuario.getNombre()+" registrado correctamente ~(*o*)~");
                 return "redirect:/usuario";
             }else{
+                redirectAttributes.addFlashAttribute("mensaje","El usuario "+usuario.getNombre()+" registrado correctamente ~(*o*)~");
                 return "redirect:/";
             }
         }

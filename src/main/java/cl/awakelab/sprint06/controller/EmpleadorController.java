@@ -39,9 +39,11 @@ public class EmpleadorController {
 
     @PostMapping("/crear")
     public String crearEmpleador(@ModelAttribute Empleador empleador, Model model,RedirectAttributes redirectAttributes){
+        //para agregar el id_usuario de mi FK
         Usuario usuario = new Usuario();
         usuario.setIdUsuario(1);
         empleador.setUsuario(usuario);
+
         //validamos RUN
         if (objEmpleadorService.buscarEmpleadorRun(empleador.getRun())){ //Si existe
             model.addAttribute("title","Registro Usuario");

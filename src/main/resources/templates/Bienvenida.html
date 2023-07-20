@@ -9,8 +9,8 @@
   <div class="alert alert-success ps-5" th:text="${mensaje}"></div>
 </div>
 <th:block th:object="${usuarioHtml}"></th:block>
-<section class="m-5 pt-5">
-  <h1 class="text-center mt-5" th:if="${usuarioHtml}!=null" th:text="Bienvenido+' ' +${usuarioHtml.getNombre()}">
+<section class="m-5 pt-2">
+  <h1 class="text-center " th:if="${usuarioHtml}!=null" th:text="Bienvenido+' ' +${usuarioHtml.getNombre()}">
     <i class="fa-solid fa-user"></i></h1>
   <h1 class="text-center mt-5" th:if="${usuarioHtml}==null" th:text="Bienvenido "><span><i
           class="fa-solid fa-user"></i></span></h1>

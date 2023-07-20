@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -32,7 +33,7 @@ public class Usuario {
     @Column(length = 100,nullable = false)
     private String email;
     @Column(name="fecha_creacion",nullable = false)
-    private LocalDate fechaCreacion;
+    private LocalDateTime fechaCreacion;
     @Column(columnDefinition = "bigint")
     private Long telefono;
     //enlazando con empleador

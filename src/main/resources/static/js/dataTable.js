@@ -24,6 +24,7 @@
     }
    ]
   });
+  $('#runDisabled').val(formatearRun($('#runDisabled').val()));
  });
 
 

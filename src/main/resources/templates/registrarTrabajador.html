@@ -39,9 +39,12 @@
     <!----------------------------------email----------------------------------------------->
     <div class="mb-3 position-relative">
       <label for="email" class="form-label">Correo Electronico (Opcional)</label>
-      <input th:value="*{email}" type="email" name="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
-      <div class="valid-tooltip end-0 rounded-start-pill">
-        (Opcional)
+      <div class="input-group has-validation">
+        <span class="input-group-text bg-primary text-white" >@</span>
+        <input th:value="*{email}" type="email" name="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
+        <div class="valid-tooltip end-0 rounded-start-pill">
+          (Opcional)
+        </div>
       </div>
     </div>
     <!----------------------------------Telefono----------------------------------------------->
@@ -104,7 +107,7 @@
     </div>
     <!----------------------------------Botton----------------------------------------------->
       <div class="btnRegistrar mb-3">
-      <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Registrar Empleador</button>
+      <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Registrar Trabajador</button>
     </div>
   </form>
 </section>

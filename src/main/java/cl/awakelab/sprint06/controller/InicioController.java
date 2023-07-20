@@ -12,11 +12,11 @@ public class InicioController {
         model.addAttribute("title", "Bienvenido");
         return "home";
     }
-    @GetMapping("/2")
+    /*@GetMapping("/2")
     public String home2(Model model){
         model.addAttribute("title", "Bienvenido");
         return "home2";
-    }
+    }*/
 
 
 }

@@ -19,9 +19,13 @@ function controlarSoloNumero(idInput='') {
 
 
 // Validadion de solo letras con ÑñéÉ...
-function validarSoloTexto(idInput){
+function validarSoloTexto(idInput,espacio=true){
     let input = $(idInput).val();
-    $(idInput).val(input.replace(/[^A-Za-záéíóúñÑÁÉÍÓÚ ]+/g,''));
+    if (espacio){
+    $(idInput).val(input.replace(/[^A-Za-záéíóúñÑÁÉÍÓÚ ]+/g,''));}
+    else{
+        $(idInput).val(input.replace(/[^A-Za-záéíóúñÑÁÉÍÓÚ]+/g,''));
+    }
 }
 
 //llamado funciones
@@ -36,13 +40,13 @@ $(document).ready(function() {
         controlarLongitudCaracteres("#telefono", 12,9);
     });
     $('#nombre').on('input',function (){
-       validarSoloTexto('#nombre')
+       validarSoloTexto('#nombre');
     });
     $('#apellido1').on('input',function (){
-        validarSoloTexto('#apellido1')
+        validarSoloTexto('#apellido1',false);
     });
     $('#apellido2').on('input',function (){
-        validarSoloTexto('#apellido2')
+        validarSoloTexto('#apellido2',false);
     });
 
 });
