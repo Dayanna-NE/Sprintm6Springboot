@@ -11,6 +11,19 @@
         <input type="hidden" th:field="*{perfil.idPerfil}" />
         <input type="hidden" th:field="*{run}" />
         <input type="hidden" th:field="*{fechaCreacion}" />
+        <!-------------------------------RUT DE QUIEN EDITA----------------------------------------------->
+        <div class="row g2 mb-3 position-relative outline-dark">
+            <div class="col-md-6 position-relative">
+                <div  class="input-group has-validation fs-4 ">
+                    <span class="input-group-text"> <label for="runDisabled" class="form-label  fs-4 ">&nbsp;RUN: &nbsp;</label></span>
+                    <input th:value="*{run}" type="text" class="form-control input-group-text text-bg-dark  fs-5" readonly id="runDisabled" placeholder="Ingrese Nombre" required>
+                    <span class="input-group-text   " ><i class="fa-solid fa-eye"></i></span>
+                </div>
+                <div class="invalid-tooltip end-0 rounded-start-pill" >
+                    ¡Solo lectura!
+                </div>
+            </div>
+        </div>
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
             <input th:field="*{nombre}" type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
