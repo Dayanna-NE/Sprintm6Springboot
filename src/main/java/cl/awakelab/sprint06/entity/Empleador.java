@@ -35,7 +35,7 @@ public class Empleador {
     @Column(columnDefinition = "bigint")
     private Long telefono;
 
-    @ManyToMany(mappedBy = "listarEmpleadores")
+    @ManyToMany(mappedBy = "listarEmpleadores",cascade = CascadeType.REMOVE)
     private List<Trabajador> listarTrabajadores;
 
 }

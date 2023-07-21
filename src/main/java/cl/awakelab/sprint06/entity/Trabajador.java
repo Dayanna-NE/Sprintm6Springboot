@@ -44,7 +44,8 @@ public class Trabajador {
     //private List<Empleador> listarEmpleadores;
 
     //emlazamos con trabajador Muchos a muchos
-    @ManyToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @ManyToMany
     @JoinTable(name = "empl_trab", //nombre de la tabla Detalle
             joinColumns = @JoinColumn(name = "id_trabajador", referencedColumnName = "id_trabajador"), //nombre de mi campo id_emleador en BD
             inverseJoinColumns = @JoinColumn(name = "id_empleador",referencedColumnName = "id_empleador")) //nombre de mi campo id_trabajado
