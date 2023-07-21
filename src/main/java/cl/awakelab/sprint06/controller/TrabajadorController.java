@@ -1,8 +1,10 @@
 package cl.awakelab.sprint06.controller;
 
+import cl.awakelab.sprint06.entity.Empleador;
 import cl.awakelab.sprint06.entity.InstitucionPrevision;
 import cl.awakelab.sprint06.entity.InstitucionSalud;
 import cl.awakelab.sprint06.entity.Trabajador;
+import cl.awakelab.sprint06.service.IEmpleadorService;
 import cl.awakelab.sprint06.service.IInstitucionPrevisionService;
 import cl.awakelab.sprint06.service.IInstitucionSaludService;
 import cl.awakelab.sprint06.service.ITrabajadorService;
@@ -12,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,6 +26,8 @@ public class TrabajadorController {
     IInstitucionSaludService objSaludService;
     @Autowired
     IInstitucionPrevisionService objPrevisionService;
+    @Autowired
+    IEmpleadorService objEmpleadorService;
       @GetMapping
     public String listarTrabajador(Model model){
         List<Trabajador> trabajadores  = objTrabajadorService.listarTrabajador();
@@ -35,11 +40,13 @@ public class TrabajadorController {
     public String formularioCrear(Model model){
         List<InstitucionSalud> institucionSaludList = objSaludService.listarInstitucionSalud();
         List<InstitucionPrevision> institucionPrevisionList = objPrevisionService.listarInstitucionPrevision();
+        List<Empleador> empleadorList = objEmpleadorService.listarEmpleador();
         Trabajador trabajador = new Trabajador();
         model.addAttribute("title","Registrar Trabajador");
         model.addAttribute("trabajadorHtml",trabajador);
         model.addAttribute("listaSaludHtml",institucionSaludList);
-        model.addAttribute("ListaPrevisionHtml",institucionPrevisionList);
+        model.addAttribute("listaPrevisionHtml",institucionPrevisionList);
+        model.addAttribute("listaEmpleadoresHtml",empleadorList);
         return "registrarTrabajador";
     }
     @PostMapping("/crear")
@@ -48,12 +55,29 @@ public class TrabajadorController {
         if (objTrabajadorService.buscarTrabajadorRun(trabajador.getRun())){//si se repite el run
             List<InstitucionSalud> institucionSaludList = objSaludService.listarInstitucionSalud();
             List<InstitucionPrevision> institucionPrevisionList = objPrevisionService.listarInstitucionPrevision();
+            List<Empleador> empleadorList = objEmpleadorService.listarEmpleador();
             model.addAttribute("trabajadorHtml",trabajador);
             model.addAttribute("listaSaludHtml",institucionSaludList);
-            model.addAttribute("ListaPrevisionHtml",institucionPrevisionList);
+            model.addAttribute("listaPrevisionHtml",institucionPrevisionList);
             model.addAttribute("title","Registrar Trabajador");
+            model.addAttribute("listaEmpleadoresHtml",empleadorList);
             return "registrarTrabajador";
         }//si no se repite el run
+       /* List<Empleador> empleadorList = new ArrayList<>();
+        Empleador empleador = objEmpleadorService.buscarEmpleador(3);
+        Empleador empleador2 = objEmpleadorService.buscarEmpleador(2);
+        System.out.println("<<<<<<<<<<<Empleador 1 :"+empleador.getRun());
+        System.out.println("<<<<<<<<<<<Empleador 2 :"+empleador2.getRun());
+        empleadorList.add(empleador);
+        empleadorList.add(empleador2);
+        System.out.println("<<<<<<<<<<<<<Antes de setear: "+empleadorList.size());
+        trabajador.setListarEmpleadores(empleadorList);
+        System.out.println("<<<<<<<<<<<<<Antes de setear: "+trabajador.getListarEmpleadores().size());*/
+        for (Empleador empleador1:
+             trabajador.getListarEmpleadores()) {
+            System.out.println("<><><> ID: "+empleador1.getIdEmpleador());
+            System.out.println("<><><> nombre: "+empleador1.getNombre());
+        }
         objTrabajadorService.crearTrabajador(trabajador);
         redirectAttributes.addFlashAttribute("mensaje","El trabajador "+trabajador.getNombre()+" registrado correctamente ~(*o*)~");
         return "redirect:/trabajador";
@@ -64,11 +88,13 @@ public class TrabajadorController {
         List<InstitucionSalud> institucionSaludList = objSaludService.listarInstitucionSalud();
         List<InstitucionPrevision> institucionPrevisionList = objPrevisionService.listarInstitucionPrevision();
         Trabajador trabajador = objTrabajadorService.buscarTrabajador(idTrabajador);
+        List<Empleador> empleadorList = objEmpleadorService.listarEmpleador();
         System.out.println("<<<<<-<-<-<-<-<-<_>_>_>_>_>_>_>_>_>_>"+trabajador.getIdTrabajador());
         model.addAttribute("title","Editar Trabajador");
         model.addAttribute("trabajadorHtml",trabajador);
         model.addAttribute("listaSaludHtml",institucionSaludList);
-        model.addAttribute("ListaPrevisionHtml",institucionPrevisionList);
+        model.addAttribute("listaPrevisionHtml",institucionPrevisionList);
+        model.addAttribute("listaEmpleadoresHtml",empleadorList);
         return "editarTrabajador";
     }
     @PostMapping("/editar")

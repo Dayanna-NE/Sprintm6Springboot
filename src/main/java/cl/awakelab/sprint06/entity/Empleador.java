@@ -35,11 +35,7 @@ public class Empleador {
     @Column(columnDefinition = "bigint")
     private Long telefono;
 
-    //emlazamos con trabajador Muchos a muchos
-    @ManyToMany
-    @JoinTable(name = "empl_trab", //nombre de la tabla Detalle
-        joinColumns = @JoinColumn(name = "id_empleador"), //nombre de mi campo id_emleador en BD
-            inverseJoinColumns = @JoinColumn(name = "id_trabajador")) //nombre de mi campo id_trabajado
+    @ManyToMany(mappedBy = "listarEmpleadores")
     private List<Trabajador> listarTrabajadores;
 
 }
