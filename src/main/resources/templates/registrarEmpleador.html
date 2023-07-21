@@ -3,7 +3,8 @@
 <head th:replace="plantillas/base :: head">
 <body>
 <header th:replace="plantillas/base2 :: header"> </header>
-<h1 class="text-center mt-4">Registro de Empleador</h1>
+
+<h1 class="text-center mt-4 "><i class="fa-solid fa-user-tie" style="color: #030407;"></i>&nbsp;Registro de Empleador</h1>
 <hr>
 <section class="formulario mb-5">
   <form th:action="@{/empleador/crear}" method="post" class="needs-validation was-validated"  th:object="${empleadorHtml}" >
