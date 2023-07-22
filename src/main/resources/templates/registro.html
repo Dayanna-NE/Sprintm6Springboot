@@ -8,7 +8,7 @@
 <div th:if="${base==2}">
   <header th:replace="plantillas/base2 :: header"> </header>
 </div>
-<h1 class="text-center mt-4">Registro de Usuario</h1>
+<h1 class="text-center mt-4"><i class="fa-solid fa-user" style="color: #05070b;"></i> &nbsp;Registro de Usuario</h1>
 <hr>
 <section class="formulario mb-5">
 <form  th:action="@{/usuario/crear/{base}(base=${base})}" method="post" class="needs-validation was-validated"  th:object="${usuarioHtml}">

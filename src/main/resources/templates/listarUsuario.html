@@ -7,7 +7,7 @@
 <body>
 
 <header th:replace="plantillas/base2 :: header"> </header>
-<h1 class="text-center mt-4">Lista de Usuarios</h1>
+<h1 class="text-center mt-4 ">Lista de Usuarios</h1>
 <hr>
 <div th:unless="${#strings.isEmpty(mensaje)}">
     <div class="alert alert-success ps-5 fs-4" th:text="${mensaje}"></div>
@@ -18,9 +18,9 @@
     </a>
 </div>
 <section class="pe-5 ps-5 pb-5 table-responsive">
-
-    <table id="lista" class="table table-bordered table-hover table-striped" >
-        <thead class="table-dark">
+    <div class="rounded-1">
+    <table id="lista" class="table table-bordered table-hover table-striped " >
+        <thead class="table-dark ">
         <tr >
             <th >ID</th>
             <th >RUN</th>
@@ -64,6 +64,7 @@
         </tr>
         </tfoot>
     </table>
+
 </section>
 
 <footer th:replace="plantillas/base :: footer"></footer>

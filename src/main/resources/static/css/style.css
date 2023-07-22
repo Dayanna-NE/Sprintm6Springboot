@@ -75,9 +75,15 @@ footer {
 }
 #lista tfoot th {
     text-align: center;
+
+}
+#lista, #listaLiquidacion{
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 /*------------------- overflow-x-scroll ------------*/
 .overflow-x-scroll{
     max-height: 300px;
 }
+
