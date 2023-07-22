@@ -1,7 +1,10 @@
 package cl.awakelab.sprint06.controller;
 
 import cl.awakelab.sprint06.entity.Liquidacion;
+import cl.awakelab.sprint06.service.IInstitucionPrevisionService;
+import cl.awakelab.sprint06.service.IInstitucionSaludService;
 import cl.awakelab.sprint06.service.ILiquidacionService;
+import cl.awakelab.sprint06.service.ITrabajadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,21 +20,30 @@ import java.util.List;
 public class LiquidacionController {
     @Autowired
     ILiquidacionService objLiquidacionService;
-
+    @Autowired
+    ITrabajadorService objTrabajadorService;
+    @Autowired
+    IInstitucionSaludService objInstitucionSaludService;
+    @Autowired
+    IInstitucionPrevisionService objInstitucionPervisionService;
     @GetMapping
     public String listarLiquidacion(Model model){
         List<Liquidacion> liquidaciones = objLiquidacionService.listarLiquidacion();
+
         model.addAttribute("title","Lista de Liquidaciones");
         model.addAttribute("liquidacionesHtml",liquidaciones);
-        return "listarLiquidaciones";
+        return "listarLiquidacion";
     }
 
-    @GetMapping("/formularioCrear")
+    @GetMapping("/crear")
     public String formularioCrear(Model model){
         Liquidacion liquidacion = new Liquidacion();
         model.addAttribute("title","Registrar Liquidacion");
         model.addAttribute("liquidacionHtml",liquidacion);
-        return "registroLiquidacion";
+        model.addAttribute("trabajadoresHtml",objTrabajadorService.listarTrabajador());
+        model.addAttribute("listaSaludHtml",objInstitucionSaludService.listarInstitucionSalud());
+        model.addAttribute("listaPrevisionHtml",objInstitucionPervisionService.listarInstitucionPrevision());
+        return "registrarLiquidacion";
     }
     @PostMapping("/crear")
     public String crearLiquidacion(@ModelAttribute Liquidacion liquidacion){

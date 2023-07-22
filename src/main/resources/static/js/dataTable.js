@@ -4,6 +4,7 @@
 
  $(document).ready(function() {
   //Llamo a la tabla que modificaré
+  let tableLiqui = new DataTable('#listaLiquidacion');
   $('#lista').DataTable({
    language: {
     url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json',

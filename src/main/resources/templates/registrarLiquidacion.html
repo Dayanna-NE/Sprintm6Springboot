@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="plantillas/base :: head">
+<body>
+<header th:replace="plantillas/base2 :: header"> </header>
+<h1 class="text-center mt-4">Registro de Trabajador</h1>
+<hr>
+<section class="formulario mb-5">
+  <form th:action="@{/liquidacion/crear}" method="post" class="needs-validation was-validated"  th:object="${liquidacionHtml}" >
+    <!----------------------------------Trabajador----------------------------------------------->
+    <div class="col-md-6 position-relative mt-3">
+
+      <th:block th:if="*{trabajador !=null}">
+        <label for="trabajador" class="form-label">Institución de Salud</label>
+        <select class="form-select is-valid" th:field="*{trabajador.idTrabajador}" name="trabajador" id="trabajador" aria-describedby="trabajadorAD" required>
+          <option selected disabled value=""><--Selecione--></option>
+          <th:block th:each="trabajador :${trabajadoresHtml}">
+            <option th:value="${trabajador.idTrabajador}" th:text="${trabajador.nombre+' '+trabajador.apellido1+' '+}"></option>
+          </th:block>
+        </select>
+      </th:block>
+      <th:block th:unless="*{institucionSalud!=null}">
+        <label for="trabajador2" class="form-label">Institución de Salud</label>
+        <select class="form-select is-valid" name="trabajador" id="trabajador2" aria-describedby="trabajadorAD" required>
+          <option selected disabled value=""><--Selecione--></option>
+          <th:block th:each="salud :${listaSaludHtml}">
+            <option th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
+          </th:block>
+        </select>
+      </th:block>
+
+      <div id="institucionSaludAD" class="invalid-tooltip end-0 rounded-start-pill">
+        Seleccione una opción.
+      </div>
+    </div>
+    <!----------------------------------AFP----------------------------------------------->
+    <div class="col-md-6 position-relative mt-3">
+
+      <th:block th:if="*{institucionPrevision!=null}">
+        <label for="institucionPrevision1" class="form-label">AFP</label>
+        <select class="form-select is-valid" th:field="*{institucionPrevision.idInstPrevision}" name="institucionPrevision" id="institucionPrevision1" aria-describedby="institucionPrevisionAD" required   >
+          <option selected disabled value=""><--Selecione--></option>
+          <th:block th:each="prevision : ${listaPrevisionHtml}">
+            <option th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}">...</option>
+          </th:block>
+        </select>
+      </th:block>
+      <th:block th:unless="*{institucionPrevision!=null}">
+        <label for="institucionPrevision2" class="form-label">AFP</label>
+        <select class="form-select is-valid" name="institucionPrevision" id="institucionPrevision2" aria-describedby="institucionPrevisionAD" required >
+          <option selected disabled value=""><--Selecione--></option>
+          <th:block th:each="prevision : ${listaPrevisionHtml}">
+            <option th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}">...</option>
+          </th:block>
+        </select>
+      </th:block>
+      <div id="institucionPrevisionAD" class="invalid-tooltip end-0 rounded-start-pill">
+        Seleccione una opción.
+      </div>
+    </div>
+    </div>
+    <!----------------------------------nombre----------------------------------------------->
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input th:value="*{nombre}"  type="text" name="nombre" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
+    </div>
+    <!----------------------------------apellido1----------------------------------------------->
+    <div class="mb-3">
+      <label for="apellido1" class="form-label">Apellido Paterno</label>
+      <input th:value="*{apellido1}" type="text" name="apellido1" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
+    </div>
+    <!----------------------------------apellido2----------------------------------------------->
+    <div class="mb-3 position-relative">
+      <label  for="apellido2" class="form-label">Apellido Materno (Opcional)</label>
+      <input type="text" th:value="*{apellido2}" name="apellido2" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno (Opcional)" >
+      <div class="valid-tooltip end-0 rounded-start-pill">
+        (Opcional)
+      </div>
+    </div>
+    <!----------------------------------email----------------------------------------------->
+    <div class="mb-3 position-relative">
+      <label for="email" class="form-label">Correo Electronico (Opcional)</label>
+      <div class="input-group has-validation">
+        <span class="input-group-text bg-primary text-white" >@</span>
+        <input th:value="*{email}" type="email" name="email" class="form-control" id="email" placeholder="Ingrese Correo electronico" >
+        <div class="valid-tooltip end-0 rounded-start-pill">
+          (Opcional)
+        </div>
+      </div>
+    </div>
+    <!----------------------------------Telefono----------------------------------------------->
+    <div class="mb-3 position-relative">
+      <label for="telefono" class="form-label">Telefono</label>
+      <input th:value="*{telefono}" value="telefono"  type="text" name="telefono" class="form-control" placeholder="Ingrese Teléfono" id="telefono" required>
+    </div>
+    <div class="row g2 mb-5">
+      <!--------------------------------Empleador List --------------------------------------->
+      <div class="mb-3 position-relative">
+        <div class="overflow-x-scroll ">
+          <label for="ulEmpleador" class="form-label">Empleadores</label>
+          <ul class="list-group border-3" id="ulEmpleador"  >
+            <th:block th:if="${trabajadorHtml.nombre!=null}" th:each="empleador: ${listaEmpleadoresHtml}">
+              <li class="li-empleador list-group-item w-100 " th:id="Li+${empleador.idEmpleador}">
+                <input class="form-check-input me-1 is-valid"
+                       th:name="listarEmpleadores" type="checkbox"
+                       th:value="${empleador.idEmpleador}" th:id="${empleador.idEmpleador}"
+                       th:checked="${trabajadorHtml.listarEmpleadores.contains(empleador)}">
+                <label class="form-check-label w-75 text-dark is-invalid" th:for="${empleador.idEmpleador}"
+                       th:text="${empleador.nombre +' '
+                    +empleador.apellido1+' '+empleador.apellido2}">First checkbox</label>
+              </li>
+            </th:block>
+            <th:block th:if="${trabajadorHtml.nombre==null}" th:each="empleador: ${listaEmpleadoresHtml}">
+              <li class="li-empleador list-group-item w-100 " th:id="Li+${empleador.idEmpleador}">
+                <input class="form-check-input me-1 is-invalid"
+                       required   th:name="listarEmpleadores" type="checkbox"
+                       th:value="${empleador.idEmpleador}" th:id="${empleador.idEmpleador}">
+                <label class="form-check-label w-75 text-dark is-invalid" th:for="${empleador.idEmpleador}"
+                       th:text="${empleador.nombre +' '
+                    +empleador.apellido1+' '+empleador.apellido2}">First checkbox</label>
+              </li>
+            </th:block>
+          </ul>
+        </div>
+        <input type="checkbox" hidden="" id="validHidenCB" class="form-check-input is-valid" th:required="${trabajadorHtml.run==null}" aria-describedby="validadoUlH"  >
+        <div id="validadoUlH" class="invalid-tooltip end-0 rounded-start-pill">
+          Seleccione minimo un empleador.
+        </div>
+      </div>
+      <!----------------------------------Salud----------------------------------------------->
+    <div class="col-md-6 position-relative mt-3">
+
+      <th:block th:if="*{institucionSalud!=null}">
+        <label for="institucionSalud1" class="form-label">Institución de Salud</label>
+      <select class="form-select is-valid" th:field="*{institucionSalud.idInstSalud}" name="institucionSalud" id="institucionSalud1" aria-describedby="institucionSaludAD" required>
+        <option selected disabled value=""><--Selecione--></option>
+        <th:block th:each="salud :${listaSaludHtml}">
+          <option th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
+        </th:block>
+      </select>
+      </th:block>
+      <th:block th:unless="*{institucionSalud!=null}">
+        <label for="institucionSalud2" class="form-label">Institución de Salud</label>
+        <select class="form-select is-valid" name="institucionSalud" id="institucionSalud2" aria-describedby="institucionSaludAD" required>
+          <option selected disabled value=""><--Selecione--></option>
+          <th:block th:each="salud :${listaSaludHtml}">
+            <option th:value="${salud.idInstSalud}" th:text="${salud.descripcion}"></option>
+          </th:block>
+        </select>
+      </th:block>
+
+      <div id="institucionSaludAD" class="invalid-tooltip end-0 rounded-start-pill">
+        Seleccione una opción.
+      </div>
+    </div>
+    <!----------------------------------AFP----------------------------------------------->
+      <div class="col-md-6 position-relative mt-3">
+
+        <th:block th:if="*{institucionPrevision!=null}">
+          <label for="institucionPrevision1" class="form-label">AFP</label>
+          <select class="form-select is-valid" th:field="*{institucionPrevision.idInstPrevision}" name="institucionPrevision" id="institucionPrevision1" aria-describedby="institucionPrevisionAD" required   >
+            <option selected disabled value=""><--Selecione--></option>
+            <th:block th:each="prevision : ${listaPrevisionHtml}">
+              <option th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}">...</option>
+            </th:block>
+          </select>
+        </th:block>
+        <th:block th:unless="*{institucionPrevision!=null}">
+          <label for="institucionPrevision2" class="form-label">AFP</label>
+          <select class="form-select is-valid" name="institucionPrevision" id="institucionPrevision2" aria-describedby="institucionPrevisionAD" required >
+            <option selected disabled value=""><--Selecione--></option>
+            <th:block th:each="prevision : ${listaPrevisionHtml}">
+              <option th:value="${prevision.idInstPrevision}" th:text="${prevision.descripcion}">...</option>
+            </th:block>
+          </select>
+        </th:block>
+        <div id="institucionPrevisionAD" class="invalid-tooltip end-0 rounded-start-pill">
+          Seleccione una opción.
+        </div>
+      </div>
+    </div>
+    <!----------------------------------Botton----------------------------------------------->
+      <div class="btnRegistrar mb-3">
+      <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Registrar Trabajador</button>
+    </div>
+  </form>
+</section>
+<footer th:replace="plantillas/base :: footer"></footer>
+<section th:replace="plantillas/base :: script"></section>
+<script>
+  $(document).ready(function () {
+
+
+    /*checkBox.toggleClass("border-primary-subtle bg-white")
+    label.toggleClass("text-dark");
+    $(this).toggleClass("bg-white");*/
+  });
+</script>
+</body>
+</html>

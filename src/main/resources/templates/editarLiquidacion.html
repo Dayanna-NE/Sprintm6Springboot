@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="plantillas/base :: head"></head>
+<body>
+<header th:replace="plantillas/base2 :: header"></header>
+<h1 class="text-center mt-4">Editar Empleador</h1>
+<hr>
+<section class="formulario mb-5">
+    <form th:action="@{/empleador/editar}" method="post" th:object="${empleadorHtml}" class="needs-validation was-validated">
+        <input type="hidden" th:field="*{idEmpleador}" />
+        <input type="hidden" th:field="*{run}" />
+        <input type="hidden" th:field="*{usuario.idUsuario}" />
+        <div class="row g2 mb-3 position-relative outline-dark">
+            <div class="col-md-6 position-relative">
+                <div  class="input-group has-validation fs-4 ">
+                    <span class="input-group-text"> <label for="runDisabled" class="form-label  fs-4 ">&nbsp;RUN: &nbsp;</label></span>
+                    <input th:value="*{run}" type="text" class="form-control input-group-text text-bg-dark  fs-5" readonly id="runDisabled" placeholder="Ingrese Nombre" required>
+                    <span class="input-group-text   " ><i class="fa-solid fa-eye"></i></span>
+                </div>
+                <div class="invalid-tooltip end-0 rounded-start-pill" >
+                    ¡Solo lectura!
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input th:field="*{nombre}" type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
+        </div>
+        <div class="mb-3">
+            <label for="apellido1" class="form-label">Apellido Paterno</label>
+            <input th:field="*{apellido1}" type="text" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
+        </div>
+        <div class="mb-3">
+            <label for="apellido2" class="form-label">Apellido Materno (Opcional)</label>
+            <input th:field="*{apellido2}" type="text" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo Electrónico (Opcional)</label>
+            <input th:field="*{email}" type="email" class="form-control" id="email" placeholder="Ingrese Correo Electrónico" >
+        </div>
+        <div class="mb-3">
+            <label for="direccion" class="form-label">Direccion (Opcional)</label>
+            <input th:field="*{direccion}" type="text" class="form-control" id="direccion" placeholder="Ingrese Direccion" >
+        </div>
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono (Opcional)</label>
+            <input th:field="*{telefono}" type="text" class="form-control" id="telefono" placeholder="Ingrese Teléfono">
+        </div>
+        <div class="btnEditar mb-3 mt-3">
+            <button type="submit" class="btn btn-primary  w-50"><i class="fa-solid fa-pen-to-square"></i>Guardar Cambios</button>
+        </div>
+    </form>
+</section>
+<footer th:replace="plantillas/base :: footer"></footer>
+<section th:replace="plantillas/base :: script"></section>
+</body>
+</html>
