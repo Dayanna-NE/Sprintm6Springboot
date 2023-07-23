@@ -11,8 +11,8 @@ public class Liquidacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_liquidacion",columnDefinition = "bigint",nullable = false)
-    private long idLiquidacion;
-    //Id trabajador
+    private Long idLiquidacion;
+    //---------------------------------------Id trabajador-------------------
     @ManyToOne(optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_trabajador")
     private Trabajador trabajador;
@@ -20,14 +20,16 @@ public class Liquidacion {
     @Column(nullable = false)
     private LocalDate periodo;
     @Column(name = "sueldo_imponible",nullable = false)
-    private int sueldoImponible;
+    private Integer sueldoImponible;
     @Column(name = "sueldo_liquido",nullable = false)
-    private int sueldoLiquido;
+    private Integer sueldoLiquido;
     //id institucion salud
     @ManyToOne(optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_inst_salud",nullable = false)
     private InstitucionSalud institucionSalud;
     //fin id institucion salud
+    @Column(name = "monto_inst_salud",nullable = false)
+    private Integer montoInstSalud;
     //id institucion provisional
     @ManyToOne(optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_inst_previsional",nullable = false)
@@ -35,12 +37,12 @@ public class Liquidacion {
     //fin institucion provisional
     //fin id institucion provisional
     @Column(name = "monto_inst_previsional",nullable = false)
-    private int montoInstPrevisional;
+    private Integer montoInstPrevisional;
     @Column(name = "total_descuento",nullable = false)
-    private int totalDescuento;
+    private Integer totalDescuento;
     @Column(name="total_haberes",nullable = false)
-    private int totalHaberes;
+    private Integer totalHaberes;
     @Column(nullable = false)
-    private int anticipo;
+    private Integer anticipo;
 
 }

@@ -14,7 +14,7 @@ public class Empleador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empleador",nullable = false)
-    private int idEmpleador;
+    private Integer idEmpleador;
     @Column(unique = true,nullable = false)
     private Integer run;
     @Column(length = 100,nullable = false)
@@ -35,7 +35,7 @@ public class Empleador {
     @Column(columnDefinition = "bigint")
     private Long telefono;
 
-    @ManyToMany(mappedBy = "listarEmpleadores",cascade = CascadeType.REMOVE)
+    @ManyToMany(mappedBy = "listarEmpleadores")
     private List<Trabajador> listarTrabajadores;
 
 }

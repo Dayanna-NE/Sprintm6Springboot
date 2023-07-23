@@ -38,11 +38,15 @@ public class LiquidacionController {
     @GetMapping("/crear")
     public String formularioCrear(Model model){
         Liquidacion liquidacion = new Liquidacion();
+        Integer saludSeleccionado = null;
+        Integer afpSeleccionado = null;
         model.addAttribute("title","Registrar Liquidacion");
         model.addAttribute("liquidacionHtml",liquidacion);
         model.addAttribute("trabajadoresHtml",objTrabajadorService.listarTrabajador());
         model.addAttribute("listaSaludHtml",objInstitucionSaludService.listarInstitucionSalud());
         model.addAttribute("listaPrevisionHtml",objInstitucionPervisionService.listarInstitucionPrevision());
+        model.addAttribute("saludSeleccionadoHtml",saludSeleccionado);
+        model.addAttribute("afpSeleccionadoHtml",afpSeleccionado);
         return "registrarLiquidacion";
     }
     @PostMapping("/crear")

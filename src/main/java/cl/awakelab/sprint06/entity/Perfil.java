@@ -11,7 +11,7 @@ import java.util.List;
 public class Perfil{
     @Id
     @Column(name = "id_perfil",nullable = false)
-    private int idPerfil;
+    private Integer idPerfil;
     @Column(length = 50,nullable = false)
     private String descripcion;
     @Column(nullable = false)

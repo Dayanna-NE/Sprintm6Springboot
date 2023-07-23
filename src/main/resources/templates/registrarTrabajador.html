@@ -52,7 +52,7 @@
       <label for="telefono" class="form-label">Telefono</label>
       <input th:value="*{telefono}" value="telefono"  type="text" name="telefono" class="form-control" placeholder="Ingrese Teléfono" id="telefono" required>
     </div>
-    <div class="row g2 mb-5">
+
       <!--------------------------------Empleador List --------------------------------------->
       <div class="mb-3 position-relative">
         <div class="overflow-x-scroll ">
@@ -86,6 +86,7 @@
           Seleccione minimo un empleador.
         </div>
       </div>
+    <div class="row g2 mb-5">
       <!----------------------------------Salud----------------------------------------------->
     <div class="col-md-6 position-relative mt-3">
 
@@ -146,14 +147,6 @@
 </section>
 <footer th:replace="plantillas/base :: footer"></footer>
 <section th:replace="plantillas/base :: script"></section>
-<script>
-  $(document).ready(function () {
 
-
-    /*checkBox.toggleClass("border-primary-subtle bg-white")
-    label.toggleClass("text-dark");
-    $(this).toggleClass("bg-white");*/
-  });
-</script>
 </body>
 </html>

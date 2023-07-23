@@ -25,18 +25,18 @@ public class LiquidacionImpl implements ILiquidacionService {
     }
 
     @Override
-    public Liquidacion buscarLiquidacion(int idLiquidacion) {
+    public Liquidacion buscarLiquidacion(Long idLiquidacion) {
         return objLiquidacionRepo.findById(idLiquidacion).orElseThrow(()->new NoSuchElementException("No se encontro Liquidacion"));
     }
 
     @Override
     public Liquidacion actualizarLiquidacion(Liquidacion liquidacionActualizar) {
-        Liquidacion liquidacion = buscarLiquidacion((int) liquidacionActualizar.getIdLiquidacion());
+        Liquidacion liquidacion = buscarLiquidacion(liquidacionActualizar.getIdLiquidacion());
         return objLiquidacionRepo.save(liquidacionActualizar);
     }
 
     @Override
-    public void eliminarLiquidacion(int idLiquidacion) {
+    public void eliminarLiquidacion(Long idLiquidacion) {
         objLiquidacionRepo.deleteById(idLiquidacion);
     }
 }
