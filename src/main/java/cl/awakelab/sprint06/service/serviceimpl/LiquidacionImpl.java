@@ -19,6 +19,9 @@ public class LiquidacionImpl implements ILiquidacionService {
     @Override
     public Liquidacion cerarLiquidacion(Liquidacion liquidacion) {
         liquidacion.setPeriodo(LocalDateTime.now());
+        if (liquidacion.getAnticipo()==null){
+            liquidacion.setAnticipo(0);
+        }
         return objLiquidacionRepo.save(liquidacion);
     }
 
@@ -35,6 +38,9 @@ public class LiquidacionImpl implements ILiquidacionService {
     @Override
     public Liquidacion actualizarLiquidacion(Liquidacion liquidacionActualizar) {
         Liquidacion liquidacion = buscarLiquidacion(liquidacionActualizar.getIdLiquidacion());
+        if (liquidacionActualizar.getAnticipo()==null){
+            liquidacionActualizar.setAnticipo(0);
+        }
         return objLiquidacionRepo.save(liquidacionActualizar);
     }
 
