@@ -20,6 +20,8 @@ public class InstitucionPrevision {
     //enlazando con trabajador
     @OneToMany(mappedBy = "institucionPrevision", cascade = CascadeType.ALL)
     private List<Trabajador> listarTrabajadores;
+
+
     //enlazando con Liquidacion
     @OneToMany(mappedBy = "institucionPrevision", cascade = CascadeType.ALL)
     private List<Liquidacion> listarLiquidaciones;

@@ -12,7 +12,6 @@
     <div class="row g2 mb-5">
       <!----------------------------------Trabajador----------------------------------------------->
       <div class="col-md-6 position-relative mt-3">
-
           <label for="trabajador2" class="form-label">Trabajadores</label>
           <select class="form-select is-valid" name="trabajador" id="trabajador2" aria-describedby="trabajadorAD" required>
             <option selected disabled value=""><--Selecione--></option>
@@ -24,20 +23,23 @@
               </option>
             </th:block>
           </select>
-
         <div id="trabajadorAD" class="invalid-tooltip end-0 rounded-start-pill">
-          Seleccione una opción.
+          Seleccione una opción. (͠◉_◉᷅ )
         </div>
       </div>
       <!----------------------------------Sueldo Imponible----------------------------------------------->
 
       <div class="col-md-6 position-relative mt-3">
-        <div class="mb-3">
-          <label for="sueldoImponible" class="form-label">Sueldo Imponible</label>
-          <input th:value="*{sueldoImponible}"  type="text" name="sueldoImponible" class="form-control" id="sueldoImponible" placeholder="Sueldo Imponible" required>
-        </div>
-        <div id="sueldoImponibleAD" class="invalid-tooltip end-0 rounded-start-pill">
-          Digite su sueldo imponible.
+        <label for="sueldoImponible" class="form-label">Sueldo Imponible</label>
+        <div  class="input-group has-validation">
+          <span id="isueldoImponible" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+          <input  type="text" name="totalDescuento" class="form-control is-valid border-secondary " id="sueldoImponible" placeholder="00.00" required readonly>
+          <div id="disueldoImponible" class="invalid-tooltip end-0 rounded-start-pill">
+            Ingrese el sueldo. (͠◉_◉᷅ )
+          </div>
+          <div id="dvsueldoImponible" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+            Seleccione un Trabajador. (͠◉_◉᷅ )
+          </div>
         </div>
       </div>
       <!----------------------------------Salud----------------------------------------------->
@@ -45,7 +47,7 @@
     <div class="row g2 mb-5">
       <div class="col-md-6 position-relative mt-3">
           <label for="institucionSalud2" class="form-label">Institución de Salud</label>
-          <select class="form-select is-valid" name="institucionSalud" id="institucionSalud2" aria-describedby="institucionSaludAD" required>
+          <select class="form-select is-invalid" name="institucionSalud" id="institucionSalud2" aria-describedby="institucionSaludAD" disabled>
             <option selected disabled value=""><--Selecione--></option>
             <th:block th:each="salud :${listaSaludHtml}">
               <option th:value="${salud.idInstSalud}"
@@ -54,28 +56,27 @@
               ></option>
             </th:block>
           </select>
-
         <div id="institucionSaludAD" class="invalid-tooltip end-0 rounded-start-pill">
-          Seleccione una opción.
+          Seleccione un trabajador. (✿◡‿◡)
         </div>
       </div>
       <!----------------------------------Monto Salud----------------------------------------------->
       <div class="col-md-6 position-relative mt-3">
-        <div class="mb-3">
-          <label for="montoInstSalud" class="form-label">Monto Salud</label>
-          <input th:value="*{montoInstSalud}"  type="text" name="montoInstSalud" class="form-control" id="montoInstSalud" placeholder="Monto Insitucion Salud" aria-description="montoInstSaludAD" readonly>
-        </div>
-        <div id="montoInstSaludAD" class="invalid-tooltip end-0 rounded-start-pill">
-          Digite su sueldo imponible.
+        <label for="montoInstSalud" class="form-label">Monto Salud</label>
+        <div class="input-group has-validation">
+          <span id="imontoInstSalud" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+          <input  type="text" name="montoInstSalud" class="form-control is-valid border-secondary" id="montoInstSalud" placeholder="Monto Insitucion Salud" readonly>
+          <div id="dmontoInstSalud" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+            (Automatico)(✿◡‿◡)
+          </div>
         </div>
       </div>
-
       <!----------------------------------AFP----------------------------------------------->
     </div>
     <div class="row g2 mb-5">
       <div class="col-md-6 position-relative mt-3">
           <label for="institucionPrevision2" class="form-label">AFP</label>
-          <select class="form-select is-valid" name="institucionPrevision" id="institucionPrevision2" aria-describedby="institucionPrevisionAD" required >
+          <select class="form-select is-invalid" name="institucionPrevision" id="institucionPrevision2" aria-describedby="institucionPrevisionAD" required disabled >
             <option selected disabled value=""><--Selecione--></option>
             <th:block th:each="prevision : ${listaPrevisionHtml}">
               <option th:value="${prevision.idInstPrevision}"
@@ -85,19 +86,20 @@
           </select>
 
         <div id="institucionPrevisionAD" class="invalid-tooltip end-0 rounded-start-pill">
-          Seleccione una opción.
+          Seleccione un trabajador. (✿◡‿◡)
         </div>
       </div>
 
       <!----------------------------------Monto AFP----------------------------------------------->
 
       <div class="col-md-6 position-relative mt-3">
-        <div class="mb-3">
-          <label for="montoInstPrevisional" class="form-label">Monto AFP</label>
-          <input th:value="*{montoInstPrevisional}"  type="text" name="montoInstPrevisional" class="form-control" id="montoInstPrevisional" placeholder="Monto AFP" aria-description="montoInstPrevisionalAD" readonly>
-        </div>
-        <div id="montoInstPrevisionalAD" class="invalid-tooltip end-0 rounded-start-pill">
-          Digite su sueldo imponible.
+        <label for="montoInstPrevisional" class="form-label">Monto AFP</label>
+        <div id="imontoInstPrevisional" class="input-group has-validation">
+          <span class="input-group-text bg-secondary border-secondary text-white" >$</span>
+          <input type="text" name="montoInstPrevisional" class="form-control is-valid border-secondary" id="montoInstPrevisional" placeholder="00.00" readonly>
+          <div id="dmontoInstPrevisional" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+            (Automatico)(✿◡‿◡)
+          </div>
         </div>
       </div>
 
@@ -105,44 +107,48 @@
     </div>
     <div class="row g2 mb-5">
       <div class="col-md-6 position-relative mt-3">
-        <div class="mb-3">
-          <label for="totalDescuento" class="form-label">Total Descuentos</label>
-          <input th:value="*{totalDescuento}"  type="text" name="totalDescuento" class="form-control" id="totalDescuento" placeholder="Total Descuento" aria-description="totalDescuentoAD" readonly>
-        </div>
-        <div id="totalDescuentoAD" class="invalid-tooltip end-0 rounded-start-pill">
-          Digite su sueldo imponible.
+        <label for="totalDescuento" class="form-label">Total Descuento</label>
+        <div class="input-group has-validation">
+          <span id="itotalDescuento" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+          <input  type="text" name="totalDescuento" class="form-control is-valid border-secondary " id="totalDescuento" placeholder="00.00" readonly>
+          <div id="dtotalDescuento" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+            (Automatico)(✿◡‿◡)
+          </div>
         </div>
       </div>
       <!----------------------------------Total Haberes----------------------------------------------->
       <div class="col-md-6 position-relative mt-3">
-        <div class="mb-3">
-          <label for="totalHaberes" class="form-label">Total Haberes</label>
-          <input th:value="*{totalHaberes}"  type="text" name="totalHaberes" class="form-control" id="totalHaberes" placeholder="Total Haberes" aria-description="totalHaberesAD" readonly>
-        </div>
-        <div id="totalHaberesAD" class="invalid-tooltip end-0 rounded-start-pill">
-          Digite su sueldo imponible.
+        <label for="totalHaberes" class="form-label">Monto Salud</label>
+        <div class="input-group has-validation">
+          <span id="itotalHaberes" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+          <input type="text" name="totalHaberes" class="form-control is-valid border-secondary" id="totalHaberes" placeholder="00.00" readonly>
+          <div id="dtotalHaberes" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+            (Automatico)(✿◡‿◡)
+          </div>
         </div>
       </div>
       <!----------------------------------Anticipo----------------------------------------------->
     </div>
     <div class="row g2 mb-5">
       <div class="col-md-6 position-relative mt-3">
-        <div class="mb-3">
-          <label for="anticipo" class="form-label">Anticipo</label>
-          <input th:value="*{anticipo}"  type="text" name="anticipo" class="form-control" id="anticipo" placeholder="Anticipo" aria-description="anticipoAD" required>
-        </div>
-        <div id="anticipoAD" class="invalid-tooltip end-0 rounded-start-pill">
-          Digite su sueldo imponible.
+        <label for="anticipo" class="form-label">Anticipo</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text bg-secondary border-secondary text-white" >$</span>
+          <input  type="text" name="anticipo" class="form-control is-valid border-secondary " id="anticipo" placeholder="00.00" readonly>
+          <div class="ianticipo valid-tooltip end-0 rounded-start-pill bg-secondary">
+            Seleccione un Trabajador. (͠◉_◉᷅ )
+          </div>
         </div>
       </div>
       <!----------------------------------Sueldo Liquido----------------------------------------------->
       <div class="col-md-6 position-relative mt-3">
-        <div class="mb-3">
-          <label for="sueldoLiquido" class="form-label">Sueldo Liquido</label>
-          <input th:value="*{sueldoLiquido}"  type="text" name="sueldoLiquido" class="form-control" id="sueldoLiquido" placeholder="Sueldo Liquido" aria-description="sueldoLiquidoAD" readonly>
-        </div>
-        <div id="sueldoLiquidoAD" class="invalid-tooltip end-0 rounded-start-pill">
-          Digite su sueldo imponible.
+        <label for="sueldoLiquido" class="form-label">Monto Salud</label>
+        <div class="input-group has-validation">
+          <span id="isueldoLiquido" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+          <input type="text" name="sueldoLiquido" class="form-control is-valid border-secondary " id="sueldoLiquido" placeholder="00.00" readonly>
+          <div id="dsueldoLiquido" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+            (Automatico) (✿◡‿◡)
+          </div>
         </div>
       </div>
       <!----------------------------------Botton----------------------------------------------->
@@ -155,114 +161,8 @@
 <footer th:replace="plantillas/base :: footer"></footer>
 <section th:replace="plantillas/base :: script"></section>
 <!-- /////////////////////////////////////////// JS ////////////////////////////////// -->
-<script>
-  $(document).ready(function () {
-    // --------------------------- Al selecionar Trabajador------------------
-    $('#trabajador2').change(function () {
-      const opcionSelecionada = $(this).find('option:selected');
-      const idSalud = opcionSelecionada.data('salud');
-      const idPrevision = opcionSelecionada.data('prevision');
-      console.log(idSalud);
-      console.log(idPrevision);
-      $('#institucionSalud2').val(idSalud).change();
-      $('#institucionPrevision2').val(idPrevision).change();
-    });
-    // --------------------------- Activando Select Salud -----------------
-    $('#institucionSalud2').change(function (){
-      const opcionSelecionada = $(this).find('option:selected');
-      const saludDcto = opcionSelecionada.data('salud-dcto');
-      console.log(saludDcto);
-      $('#montoInstSalud').val(saludDcto+'%');
-      $('#salud').val(saludDcto/100);
-    });
-    // ------------------------ Activando Select Prevision -----------
-    $('#institucionPrevision2').change(function () {
-      const opcionSelecionada = $(this).find('option:selected');
-      const previsionDcto = opcionSelecionada.data('prevision-dcto');
-      console.log(previsionDcto);
-      $('#montoInstPrevisional').val(previsionDcto+'%');
-      $('#prevision').val(previsionDcto/100);
-    });
-    // -------------------------------- Suelo Inponible ---------------------
-    $('#sueldoImponible').on('input',function (){
-      formatoMoneda(this);
-      // --------------------------- Declaracion Variables
-        const salud=$('#salud').val();
-        const prevision = $('#prevision').val();
-      console.log("constante Salud: "+salud);
-      console.log("constante prevision"+prevision);
-        let montoSalud=0.0;
-        let montoPrevicion=0.0;
-        let totalDescuento=0.0;
-        let totalHaberes=0;
-        let sueldoLiquido;
-        let sueldoInponible = formatoEntero($(this).val());
-        console.log(montoSalud);
-        console.log(montoPrevicion);
-        console.log(totalDescuento);
-        console.log(totalHaberes);
-      console.log(sueldoInponible);
-      // ----------------------------------Iniciando Operaciones----------------
-        montoSalud= sueldoInponible * salud;
-        montoPrevicion= sueldoInponible * prevision;
-        totalDescuento = montoSalud + montoPrevicion;
-        totalHaberes= sueldoInponible - totalDescuento;
-        sueldoLiquido = totalHaberes;
+<script th:src="@{/js/validacionLiquidacion.js}">
 
-      console.log("monto salud: "+montoSalud);
-      console.log("monto afp: "+montoPrevicion);
-      console.log(totalDescuento);
-      console.log(totalHaberes);
-
-      // ------------------------- Entregando valores
-        $('#montoInstSalud').val(montoSalud);
-        $('#montoInstPrevisional').val(montoPrevicion);
-        $('#totalDescuento').val(totalDescuento);
-        $('#totalHaberes').val(totalHaberes);
-        $('#sueldoLiquido').val(sueldoLiquido);
-    });
-      //-------------------------Anticipo -------------------------------
-    $('#anticipo').on('input',function () {
-
-      let anticipo = formatoEntero($(this).val());
-      let sueldoTotal = formatoEntero($('#totalHaberes').val());
-      sueldoTotal = sueldoTotal - anticipo;
-      $('#sueldoLiquido').val(sueldoTotal);
-
-    });
-
-    // --------------------------transformar a moneda------------------------------//
-    function formatoMoneda(input) {
-      // Eliminamos cualquier carácter no numérico que no sea el punto decimal
-      let valor = input.value.replace(/[^\d.]/g, '');
-
-      // Si el valor comienza con un punto decimal, lo reemplazamos por 0.
-      if (valor.startsWith('.')) {
-        valor = '0' + valor;
-      }
-
-      // Dividimos el valor en parte entera y decimal, si aplica.
-      let partes = valor.split('.');
-      let parteEntera = partes[0];
-      let parteDecimal = partes.length > 1 ? '.' + partes[1] : '';
-
-      // Añadimos un separador de miles a la parte entera.
-      parteEntera = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-      // Limitamos el número de decimales a dos.
-      parteDecimal = parteDecimal.slice(0, 3);
-      input.value = ''+ parteEntera + parteDecimal;
-      // Unimos las partes y mostramos el resultado en el input.
-      //input.value = '$' + parteEntera + parteDecimal;
-    }
-  // ------------------------------------- formato entero --------------------------------//
-    function formatoEntero(valor){
-      //eliminamos cualquier caracter que no sea numero
-      return valor.replace(/[^0-9.]+/g, '');
-    }
-
-
-  });
 </script>
 </body>
 </html>
