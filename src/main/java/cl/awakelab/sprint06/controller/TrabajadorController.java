@@ -63,21 +63,7 @@ public class TrabajadorController {
             model.addAttribute("listaEmpleadoresHtml",empleadorList);
             return "registrarTrabajador";
         }//si no se repite el run
-       /* List<Empleador> empleadorList = new ArrayList<>();
-        Empleador empleador = objEmpleadorService.buscarEmpleador(3);
-        Empleador empleador2 = objEmpleadorService.buscarEmpleador(2);
-        System.out.println("<<<<<<<<<<<Empleador 1 :"+empleador.getRun());
-        System.out.println("<<<<<<<<<<<Empleador 2 :"+empleador2.getRun());
-        empleadorList.add(empleador);
-        empleadorList.add(empleador2);
-        System.out.println("<<<<<<<<<<<<<Antes de setear: "+empleadorList.size());
-        trabajador.setListarEmpleadores(empleadorList);
-        System.out.println("<<<<<<<<<<<<<Antes de setear: "+trabajador.getListarEmpleadores().size());*/
-        for (Empleador empleador1:
-             trabajador.getListarEmpleadores()) {
-            System.out.println("<><><> ID: "+empleador1.getIdEmpleador());
-            System.out.println("<><><> nombre: "+empleador1.getNombre());
-        }
+
         objTrabajadorService.crearTrabajador(trabajador);
         redirectAttributes.addFlashAttribute("mensaje","El trabajador "+trabajador.getNombre()+" registrado correctamente ~(*o*)~");
         return "redirect:/trabajador";

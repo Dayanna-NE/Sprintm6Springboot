@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @Table(name = "liquidacion")
@@ -18,7 +20,7 @@ public class Liquidacion {
     private Trabajador trabajador;
     //Fin id trabajador
     @Column(nullable = false)
-    private LocalDate periodo;
+    private LocalDateTime periodo;
     @Column(name = "sueldo_imponible",nullable = false)
     private Integer sueldoImponible;
     @Column(name = "sueldo_liquido",nullable = false)

@@ -7,8 +7,16 @@
 <hr>
 <section class="formulario mb-5">
   <form th:action="@{/liquidacion/crear}" method="post" class="needs-validation was-validated"  th:object="${liquidacionHtml}" >
-    <input type="hidden" id="salud">
-    <input type="hidden" id="prevision">
+    <input type="hidden" id="salud"  >
+    <input type="hidden" id="prevision" >
+      <!--Guardando los valores formateados-->
+      <input type="hidden" name="sueldoImponible">
+      <input type="hidden" name="sueldoLiquido">
+      <input type="hidden" name="montoInstSalud">
+      <input type="hidden" name="montoInstPrevisional">
+      <input type="hidden" name="totalDescuento">
+      <input type="hidden" name="totalHaberes">
+      <input type="hidden" name="anticipo">
     <div class="row g2 mb-5">
       <!----------------------------------Trabajador----------------------------------------------->
       <div class="col-md-6 position-relative mt-3">
@@ -33,7 +41,7 @@
         <label for="sueldoImponible" class="form-label">Sueldo Imponible</label>
         <div  class="input-group has-validation">
           <span id="isueldoImponible" class="input-group-text bg-secondary border-secondary text-white" >$</span>
-          <input  type="text" name="totalDescuento" class="form-control is-valid border-secondary " id="sueldoImponible" placeholder="00.00" required readonly>
+          <input  type="text" class="form-control is-valid border-secondary " id="sueldoImponible" placeholder="00.00" required readonly>
           <div id="disueldoImponible" class="invalid-tooltip end-0 rounded-start-pill">
             Ingrese el sueldo. (͠◉_◉᷅ )
           </div>
@@ -47,8 +55,8 @@
     <div class="row g2 mb-5">
       <div class="col-md-6 position-relative mt-3">
           <label for="institucionSalud2" class="form-label">Institución de Salud</label>
-          <select class="form-select is-invalid" name="institucionSalud" id="institucionSalud2" aria-describedby="institucionSaludAD" disabled>
-            <option selected disabled value=""><--Selecione--></option>
+          <select th:field="*{institucionSalud}" class="form-select is-invalid"  id="institucionSalud2" aria-describedby="institucionSaludAD" disabled>
+            <option selected disabled value=""><--Automatico--></option>
             <th:block th:each="salud :${listaSaludHtml}">
               <option th:value="${salud.idInstSalud}"
                       th:data-salud-dcto="${salud.procDcto}"
@@ -65,7 +73,7 @@
         <label for="montoInstSalud" class="form-label">Monto Salud</label>
         <div class="input-group has-validation">
           <span id="imontoInstSalud" class="input-group-text bg-secondary border-secondary text-white" >$</span>
-          <input  type="text" name="montoInstSalud" class="form-control is-valid border-secondary" id="montoInstSalud" placeholder="Monto Insitucion Salud" readonly>
+          <input  type="text" oninput="formatoMoneda(this)" class="form-control is-valid border-secondary" id="montoInstSalud" placeholder="Monto Insitucion Salud" readonly>
           <div id="dmontoInstSalud" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
             (Automatico)(✿◡‿◡)
           </div>
@@ -76,8 +84,8 @@
     <div class="row g2 mb-5">
       <div class="col-md-6 position-relative mt-3">
           <label for="institucionPrevision2" class="form-label">AFP</label>
-          <select class="form-select is-invalid" name="institucionPrevision" id="institucionPrevision2" aria-describedby="institucionPrevisionAD" required disabled >
-            <option selected disabled value=""><--Selecione--></option>
+          <select th:field="*{institucionPrevision}"  class="form-select is-invalid"   id="institucionPrevision2" aria-describedby="institucionPrevisionAD" disabled  >
+            <option selected disabled value=""><--Automatico--></option>
             <th:block th:each="prevision : ${listaPrevisionHtml}">
               <option th:value="${prevision.idInstPrevision}"
                       th:data-prevision-dcto="${prevision.proDcto}"
@@ -94,9 +102,9 @@
 
       <div class="col-md-6 position-relative mt-3">
         <label for="montoInstPrevisional" class="form-label">Monto AFP</label>
-        <div id="imontoInstPrevisional" class="input-group has-validation">
-          <span class="input-group-text bg-secondary border-secondary text-white" >$</span>
-          <input type="text" name="montoInstPrevisional" class="form-control is-valid border-secondary" id="montoInstPrevisional" placeholder="00.00" readonly>
+        <div  class="input-group has-validation">
+          <span id="imontoInstPrevisional" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+          <input type="text" oninput="formatoMoneda(this)" class="form-control is-valid border-secondary" id="montoInstPrevisional" placeholder="00.00" readonly>
           <div id="dmontoInstPrevisional" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
             (Automatico)(✿◡‿◡)
           </div>
@@ -110,7 +118,7 @@
         <label for="totalDescuento" class="form-label">Total Descuento</label>
         <div class="input-group has-validation">
           <span id="itotalDescuento" class="input-group-text bg-secondary border-secondary text-white" >$</span>
-          <input  type="text" name="totalDescuento" class="form-control is-valid border-secondary " id="totalDescuento" placeholder="00.00" readonly>
+          <input  type="text" oninput="formatoMoneda(this)" class="form-control is-valid border-secondary " id="totalDescuento" placeholder="00.00" readonly>
           <div id="dtotalDescuento" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
             (Automatico)(✿◡‿◡)
           </div>
@@ -121,7 +129,7 @@
         <label for="totalHaberes" class="form-label">Monto Salud</label>
         <div class="input-group has-validation">
           <span id="itotalHaberes" class="input-group-text bg-secondary border-secondary text-white" >$</span>
-          <input type="text" name="totalHaberes" class="form-control is-valid border-secondary" id="totalHaberes" placeholder="00.00" readonly>
+          <input type="text" oninput="formatoMoneda(this)" class="form-control is-valid border-secondary" id="totalHaberes" placeholder="00.00" readonly>
           <div id="dtotalHaberes" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
             (Automatico)(✿◡‿◡)
           </div>
@@ -133,9 +141,9 @@
       <div class="col-md-6 position-relative mt-3">
         <label for="anticipo" class="form-label">Anticipo</label>
         <div class="input-group has-validation">
-          <span class="input-group-text bg-secondary border-secondary text-white" >$</span>
-          <input  type="text" name="anticipo" class="form-control is-valid border-secondary " id="anticipo" placeholder="00.00" readonly>
-          <div class="ianticipo valid-tooltip end-0 rounded-start-pill bg-secondary">
+          <span id="ianticipo" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+          <input  type="text" oninput="formatoMoneda(this)" class="form-control is-valid border-secondary " id="anticipo" placeholder="00.00" readonly>
+          <div id="danticipo" class="ianticipo valid-tooltip end-0 rounded-start-pill bg-secondary">
             Seleccione un Trabajador. (͠◉_◉᷅ )
           </div>
         </div>
@@ -145,7 +153,7 @@
         <label for="sueldoLiquido" class="form-label">Monto Salud</label>
         <div class="input-group has-validation">
           <span id="isueldoLiquido" class="input-group-text bg-secondary border-secondary text-white" >$</span>
-          <input type="text" name="sueldoLiquido" class="form-control is-valid border-secondary " id="sueldoLiquido" placeholder="00.00" readonly>
+          <input type="text" oninput="formatoMoneda(this)" class="form-control is-valid border-secondary " id="sueldoLiquido" placeholder="00.00" readonly>
           <div id="dsueldoLiquido" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
             (Automatico) (✿◡‿◡)
           </div>
@@ -154,7 +162,7 @@
       <!----------------------------------Botton----------------------------------------------->
     </div>
     <div class="btnRegistrar mb-3">
-      <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Registrar Trabajador</button>
+      <button id="registrarTrabajador" type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Registrar Liquidación</button>
     </div>
   </form>
 </section>

@@ -70,10 +70,10 @@ footer {
     box-shadow: 8px 8px 8px darkslategrey;
 }
 /* ----------------Data table ----------------------*/
-#lista thead th {
+#lista thead th,#listaLiquidacion thead th {
     text-align: center;
 }
-#lista tfoot th {
+#lista tfoot th,#listaLiquidacion tfoot th {
     text-align: center;
 
 }

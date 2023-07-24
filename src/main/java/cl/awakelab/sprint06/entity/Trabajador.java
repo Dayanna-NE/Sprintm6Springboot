@@ -47,7 +47,7 @@ public class Trabajador {
 
     @ManyToMany
     @JoinTable(name = "empl_trab", //nombre de la tabla Detalle
-            joinColumns = @JoinColumn(name = "id_trabajador",nullable = false), //nombre de mi campo id_emleador en BD
+            joinColumns = @JoinColumn(name = "id_trabajador", nullable = false), //nombre de mi campo id_emleador en BD
             inverseJoinColumns = @JoinColumn(name = "id_empleador",nullable = false)) //nombre de mi campo id_trabajado
     private List<Empleador> listarEmpleadores;
 }

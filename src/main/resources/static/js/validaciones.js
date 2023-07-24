@@ -47,6 +47,7 @@ $(document).ready(function() {
     });
     $('#apellido2').on('input',function (){
         validarSoloTexto('#apellido2',false);
+
     });
 
 

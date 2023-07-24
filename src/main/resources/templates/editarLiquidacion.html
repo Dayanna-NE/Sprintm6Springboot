@@ -1,58 +1,183 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:replace="plantillas/base :: head"></head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="es">
+<head th:replace="plantillas/base :: head">
 <body>
-<header th:replace="plantillas/base2 :: header"></header>
-<h1 class="text-center mt-4">Editar Empleador</h1>
+<header th:replace="plantillas/base2 :: header"> </header>
+<h1 class="text-center mt-4">Editar Liquidación</h1>
 <hr>
 <section class="formulario mb-5">
-    <form th:action="@{/empleador/editar}" method="post" th:object="${empleadorHtml}" class="needs-validation was-validated">
-        <input type="hidden" th:field="*{idEmpleador}" />
-        <input type="hidden" th:field="*{run}" />
-        <input type="hidden" th:field="*{usuario.idUsuario}" />
-        <div class="row g2 mb-3 position-relative outline-dark">
-            <div class="col-md-6 position-relative">
-                <div  class="input-group has-validation fs-4 ">
-                    <span class="input-group-text"> <label for="runDisabled" class="form-label  fs-4 ">&nbsp;RUN: &nbsp;</label></span>
-                    <input th:value="*{run}" type="text" class="form-control input-group-text text-bg-dark  fs-5" readonly id="runDisabled" placeholder="Ingrese Nombre" required>
-                    <span class="input-group-text   " ><i class="fa-solid fa-eye"></i></span>
-                </div>
-                <div class="invalid-tooltip end-0 rounded-start-pill" >
-                    ¡Solo lectura!
+    <form th:action="@{/liquidacion/editar}" method="post" class="needs-validation was-validated"  th:object="${liquidacionHtml}" >
+        <input type="hidden" id="salud"  >
+        <input type="hidden" id="prevision" >
+        <!--Guardando los valores formateados-->
+        <input type="hidden" name="sueldoImponible">
+        <input type="hidden" name="sueldoLiquido">
+        <input type="hidden" name="montoInstSalud">
+        <input type="hidden" name="montoInstPrevisional">
+        <input type="hidden" name="totalDescuento">
+        <input type="hidden" name="totalHaberes">
+        <input type="hidden" name="anticipo">
+        <input type="hidden" th:field="*{idLiquidacion}">
+        <input type="hidden" th:field="*{periodo}">
+        <div class="row g2 mb-5">
+            <!----------------------------------Trabajador----------------------------------------------->
+            <div class="col-md-6 position-relative mt-3">
+                <label for="trabajador2" class="form-label">Trabajadores</label>
+                <select class="form-select is-valid" th:field="*{trabajador.idTrabajador}" name="trabajador" id="trabajador2" aria-describedby="trabajadorAD" required>
+                    <option selected disabled value=""><--Selecione--></option>
+                    <th:block th:each="trabajador :${trabajadoresHtml}">
+                        <option th:value="${trabajador.idTrabajador}"
+                                th:data-salud="${trabajador.institucionSalud.idInstSalud}"
+                                th:data-prevision="${trabajador.institucionPrevision.idInstPrevision}"
+                                th:text="${trabajador.nombre+' '+trabajador.apellido1+' '+trabajador.apellido2}">
+                        </option>
+                    </th:block>
+                </select>
+                <div id="trabajadorAD" class="invalid-tooltip end-0 rounded-start-pill">
+                    Seleccione una opción. (͠◉_◉᷅ )
                 </div>
             </div>
-        </div>
+            <!----------------------------------Sueldo Imponible----------------------------------------------->
 
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input th:field="*{nombre}" type="text" class="form-control" id="nombre" placeholder="Ingrese Nombre" required>
+            <div class="col-md-6 position-relative mt-3">
+                <label for="sueldoImponible" class="form-label">Sueldo Imponible</label>
+                <div  class="input-group has-validation">
+                    <span id="isueldoImponible" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+                    <input  type="text" th:value="*{sueldoImponible}" class="form-control is-valid border-secondary " id="sueldoImponible" placeholder="00.00" required>
+                    <div id="disueldoImponible" class="invalid-tooltip end-0 rounded-start-pill">
+                        Ingrese el sueldo. (͠◉_◉᷅ )
+                    </div>
+                    <div id="dvsueldoImponible" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+                        Seleccione un Trabajador. (͠◉_◉᷅ )
+                    </div>
+                </div>
+            </div>
+            <!----------------------------------Salud----------------------------------------------->
         </div>
-        <div class="mb-3">
-            <label for="apellido1" class="form-label">Apellido Paterno</label>
-            <input th:field="*{apellido1}" type="text" class="form-control" id="apellido1" placeholder="Ingrese Apellido Paterno" required>
+        <div class="row g2 mb-5">
+            <div class="col-md-6 position-relative mt-3">
+                <label for="institucionSalud2" class="form-label">Institución de Salud</label>
+                <select  class="form-select is-invalid" name="institucionSalud" id="institucionSalud2" aria-describedby="institucionSaludAD" disabled>
+                    <option selected disabled value=""><--Automatico--></option>
+                    <th:block th:each="salud :${listaSaludHtml}">
+                        <option th:value="${salud.idInstSalud}"
+                                th:data-salud-dcto="${salud.procDcto}"
+                                th:text="${salud.descripcion}"
+                        ></option>
+                    </th:block>
+                </select>
+                <div id="institucionSaludAD" class="invalid-tooltip end-0 rounded-start-pill">
+                    Seleccione un trabajador. (✿◡‿◡)
+                </div>
+            </div>
+            <!----------------------------------Monto Salud----------------------------------------------->
+            <div class="col-md-6 position-relative mt-3">
+                <label for="montoInstSalud" class="form-label">Monto Salud</label>
+                <div class="input-group has-validation">
+                    <span id="imontoInstSalud"  class="input-group-text bg-secondary border-secondary text-white" >$</span>
+                    <input  type="text" th:value="*{montoInstSalud}"  class="form-control is-valid border-secondary" id="montoInstSalud" placeholder="Monto Insitucion Salud" readonly>
+                    <div id="dmontoInstSalud" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+                        (Automatico)(✿◡‿◡)
+                    </div>
+                </div>
+            </div>
+            <!----------------------------------AFP----------------------------------------------->
         </div>
-        <div class="mb-3">
-            <label for="apellido2" class="form-label">Apellido Materno (Opcional)</label>
-            <input th:field="*{apellido2}" type="text" class="form-control" id="apellido2" placeholder="Ingrese Apellido Materno">
+        <div class="row g2 mb-5">
+            <div class="col-md-6 position-relative mt-3">
+                <label for="institucionPrevision2" class="form-label">AFP</label>
+                <select  class="form-select is-invalid" name="institucionPrevision"  id="institucionPrevision2" aria-describedby="institucionPrevisionAD" disabled  >
+                    <option selected disabled value=""><--Automatico--></option>
+                    <th:block th:each="prevision : ${listaPrevisionHtml}">
+                        <option th:value="${prevision.idInstPrevision}"
+                                th:data-prevision-dcto="${prevision.proDcto}"
+                                th:text="${prevision.descripcion}">...</option>
+                    </th:block>
+                </select>
+
+                <div id="institucionPrevisionAD" class="invalid-tooltip end-0 rounded-start-pill">
+                    Seleccione un trabajador. (✿◡‿◡)
+                </div>
+            </div>
+
+            <!----------------------------------Monto AFP----------------------------------------------->
+
+            <div class="col-md-6 position-relative mt-3">
+                <label for="montoInstPrevisional" class="form-label">Monto AFP</label>
+                <div  class="input-group has-validation">
+                    <span id="imontoInstPrevisional"  class="input-group-text bg-secondary border-secondary text-white" >$</span>
+                    <input type="text" th:value="*{montoInstPrevisional}"  class="form-control is-valid border-secondary" id="montoInstPrevisional" placeholder="00.00" readonly>
+                    <div id="dmontoInstPrevisional" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+                        (Automatico)(✿◡‿◡)
+                    </div>
+                </div>
+            </div>
+
+            <!----------------------------------Total Descuentos----------------------------------------------->
         </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Correo Electrónico (Opcional)</label>
-            <input th:field="*{email}" type="email" class="form-control" id="email" placeholder="Ingrese Correo Electrónico" >
+        <div class="row g2 mb-5">
+            <div class="col-md-6 position-relative mt-3">
+                <label for="totalDescuento" class="form-label">Total Descuento</label>
+                <div class="input-group has-validation">
+                    <span id="itotalDescuento" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+                    <input  type="text" th:value="*{totalDescuento}"  class="form-control is-valid border-secondary " id="totalDescuento" placeholder="00.00" readonly>
+                    <div id="dtotalDescuento" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+                        (Automatico)(✿◡‿◡)
+                    </div>
+                </div>
+            </div>
+            <!----------------------------------Total Haberes----------------------------------------------->
+            <div class="col-md-6 position-relative mt-3">
+                <label for="totalHaberes" class="form-label">Monto Salud</label>
+                <div class="input-group has-validation">
+                    <span id="itotalHaberes" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+                    <input type="text" th:value="*{totalHaberes}"  class="form-control is-valid border-secondary" id="totalHaberes" placeholder="00.00" readonly>
+                    <div id="dtotalHaberes" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+                        (Automatico)(✿◡‿◡)
+                    </div>
+                </div>
+            </div>
+            <!----------------------------------Anticipo----------------------------------------------->
         </div>
-        <div class="mb-3">
-            <label for="direccion" class="form-label">Direccion (Opcional)</label>
-            <input th:field="*{direccion}" type="text" class="form-control" id="direccion" placeholder="Ingrese Direccion" >
+        <div class="row g2 mb-5">
+            <div class="col-md-6 position-relative mt-3">
+                <label for="anticipo" class="form-label">Anticipo</label>
+                <div class="input-group has-validation">
+                    <span id="ianticipo" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+                    <input  type="text" th:value="*{anticipo}" class="form-control is-valid border-secondary " id="anticipo" placeholder="00.00" readonly>
+                    <div id="danticipo" class="ianticipo valid-tooltip end-0 rounded-start-pill bg-secondary">
+                        Seleccione un Trabajador. (͠◉_◉᷅ )
+                    </div>
+                </div>
+            </div>
+            <!----------------------------------Sueldo Liquido----------------------------------------------->
+            <div class="col-md-6 position-relative mt-3">
+                <label for="sueldoLiquido" class="form-label">Monto Salud</label>
+                <div class="input-group has-validation">
+                    <span id="isueldoLiquido" class="input-group-text bg-secondary border-secondary text-white" >$</span>
+                    <input type="text" th:value="*{sueldoLiquido}"  class="form-control is-valid border-secondary " id="sueldoLiquido" placeholder="00.00" readonly>
+                    <div id="dsueldoLiquido" class="valid-tooltip end-0 rounded-start-pill bg-secondary">
+                        (Automatico) (✿◡‿◡)
+                    </div>
+                </div>
+            </div>
+            <!----------------------------------Botton----------------------------------------------->
         </div>
-        <div class="mb-3">
-            <label for="telefono" class="form-label">Teléfono (Opcional)</label>
-            <input th:field="*{telefono}" type="text" class="form-control" id="telefono" placeholder="Ingrese Teléfono">
-        </div>
-        <div class="btnEditar mb-3 mt-3">
-            <button type="submit" class="btn btn-primary  w-50"><i class="fa-solid fa-pen-to-square"></i>Guardar Cambios</button>
+        <div class="btnRegistrar mb-3">
+            <button id="registrarTrabajador" type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i> Guardar Cambios</button>
         </div>
     </form>
 </section>
 <footer th:replace="plantillas/base :: footer"></footer>
 <section th:replace="plantillas/base :: script"></section>
+<!-- /////////////////////////////////////////// JS ////////////////////////////////// -->
+<script th:src="@{/js/validacionLiquidacion.js}"></script>
+<script>
+    $(document).ready(function (){
+        $('#trabajador2').change();
+        $('#trabajador2').prop('disabled',true);
+
+    })
+</script>
 </body>
 </html>

@@ -2,19 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head th:replace="plantillas/base :: head">
 
-    <title>Lista de Trabajadores</title>
+    <title>Lista de Liquidacion</title>
 </head>
 <body>
 
 <header th:replace="plantillas/base2 :: header"> </header>
-<h1 class="text-center mt-4">Lista de Trabajadores</h1>
+<h1 class="text-center mt-4">Lista de Liquidaciones</h1>
 <hr>
 <div th:unless="${#strings.isEmpty(mensaje)}">
     <div class="alert alert-success ps-5 fs-4" th:text="${mensaje}"></div>
 </div>
 <div class="btnRegistrar mb-3">
     <a th:href="@{/liquidacion/crear}">
-        <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i>  Agregar Trabajador</button>
+        <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fas fa-plus" ></i>  Agregar Liquidación</button>
     </a>
 </div>
 <section class="pe-5 ps-5 pb-5 table-responsive">
