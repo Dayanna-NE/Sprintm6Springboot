@@ -70,13 +70,24 @@ $(document).ready(function () {
     });
     // -------------------------------- Suelo Inponible ---------------------
     $('#sueldoImponible').on('input',function (){
-        controlarLongitudCaracteres('#sueldoImponible',12,0);
+        controlarLongitudCaracteres('#sueldoImponible',11,0);
         formatoMoneda(this);
-
-        if($(this).val().length >0){
+        let longitudSueldoImponible =formatoEntero($(this).val()).length;
+        if(longitudSueldoImponible>0){
             $('#isueldoImponible')
                 .removeClass('bg-danger border-danger')
                 .addClass('bg-success border-border-success');
+            $('#disueldoImponible')
+                .removeClass('invalid-tooltip')
+                .addClass('valid-tooltip');
+            if (Math.floor(longitudSueldoImponible % 2) ===0){
+                $('#disueldoImponible')
+                    .text("(✿◕‿◕)~Ingresando sueldo ");
+            }else{
+                $('#disueldoImponible')
+                    .text("~(◕‿◕✿) Ingresando sueldo ");
+            }
+
             //----->Activando casillas automaticas
             cambioEstilosOn('montoInstSalud');
             cambioEstilosOn('montoInstPrevisional');
@@ -89,6 +100,10 @@ $(document).ready(function () {
             $('#isueldoImponible')
                 .removeClass('bg-success border-success')
                 .addClass('bg-danger border-border-danger');
+            $('#disueldoImponible')
+                .removeClass('valid-tooltip')
+                .addClass('invalid-tooltip')
+                .text('(͠◉_◉᷅ ) Ingrese el sueldo. ');
             //--->Desactivando casillas automaticas
             cambioEstilosOff('montoInstSalud');
             cambioEstilosOff('montoInstPrevisional');
@@ -177,7 +192,7 @@ $(document).ready(function () {
 
     //-------------------------Anticipo -------------------------------
     $('#anticipo').on('input',function () {
-        controlarLongitudCaracteres('#anticipo',12,0);
+        controlarLongitudCaracteres('#anticipo',11,0);
         formatoMoneda(this);
         let anticipo = formatoEntero($(this).val());
         let sueldoTotal = formatoEntero($('#totalHaberes').val());
@@ -185,6 +200,14 @@ $(document).ready(function () {
         $('#sueldoLiquido').val(sueldoTotal);
         actualizarValuePorName('anticipo',anticipo);
         actualizarValuePorName('sueldoLiquido',sueldoTotal);
+        let longitudAnticipo = anticipo.length;
+        if (longitudAnticipo % 2 ===0){
+            $('#danticipo')
+                .text('(✿◕‿◕)~ Ingresando anticipo. ');
+        }else{
+            $('#danticipo')
+                .text('~(◕‿◕✿) Ingresando anticipo. ');
+        }
         // ---> Activando Formato Moneda <-----
         $('#sueldoLiquido').trigger('input');
     });
@@ -212,7 +235,7 @@ $(document).ready(function () {
 
         // Limitamos el número de decimales a dos.
         parteDecimal = ' '+parteDecimal.slice(0, 3);
-        input.value= '$'+parteEntera;
+        input.value= parteEntera;
         // Unimos las partes y mostramos el resultado en el input.
         //input.value = '$' + parteEntera + parteDecimal;
     }
