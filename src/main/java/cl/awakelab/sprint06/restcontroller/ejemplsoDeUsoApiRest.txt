@@ -1,0 +1,164 @@
+-------------------------------USUARIO-----------------------------------------
+Usuario (GET, POST, PUT, DELETE)
+
+// ----------> Listar todos los Usuarios GET
+http://localhost:8080/api/usuario
+
+// ----------> Buscar un Usuario por id GET
+http://localhost:8080/api/usuario/buscar/1
+
+// ----------> Eliminar usuario por id DELETE
+http://localhost:8080/api/usuario/eliminar/3
+
+// ----------> Editar usuario por id PUT
+http://localhost:8080/api/usuario/editar/3
+{
+    "clave": "clave222",
+    "nombre": "Random",
+    "apellido1": "Tupelo",
+    "apellido2": "",
+    "email": "janesmith@gmail.com",
+    "telefono": null
+}
+
+// ----------> CREAR metodo POST
+http://localhost:8080/api/usuario/crear
+{
+    "run": 123628712,
+    "clave": "clave222",
+    "nombre": "Dayanna",
+    "apellido1": "Nunez",
+    "apellido2": "",
+    "email": "janesmith@gmail.com",
+    "perfil": {
+        "idPerfil": 3
+    },
+    "telefono": null
+}
+-------------------------------EMPLEADOR-----------------------------------------
+Empleador (GET, POST, PUT, DELETE)
+
+// ----------> Listar todos los Empleadores GET
+http://localhost:8080/api/empleador
+
+// ----------> Buscar un Empleador por id GET
+http://localhost:8080/api/empleador/buscar/6
+
+// ----------> Eliminar Empleador por id DELETE
+http://localhost:8080/api/empleador/eliminar/6
+
+// ----------> Editar Empleador por id PUT
+http://localhost:8080/api/empleador/editar/3
+{
+        "nombre": "Lily2",
+        "apellido1": "Baker",
+        "apellido2": "Gray",
+        "direccion": null,
+        "email": "lilybaker@gmail.com",
+        "telefono": 6789054321
+}
+
+// ----------> CREAR metodo POST
+http://localhost:8080/api/empleador
+{
+        "run": 21231122,
+        "nombre": "Dayanna",
+        "apellido1": "Nunez",
+        "apellido2": null,
+        "direccion": null,
+        "email": null,
+        "telefono": null,
+        "usuario":{
+            "idUsuario":"1"
+        }
+}
+
+------------------------------TRABAJADOR------------------------------------------
+Trabajador(GET, POST, PUT, DELETE)
+// ----------> Listar todos los Empleadores GET
+http://localhost:8080/api/trabajador
+
+// ----------> Buscar un Trabajador por id GET
+http://localhost:8080/api/trabajador/buscar/4
+
+// ----------> Eliminar Trabajador por id DELETE
+http://localhost:8080/api/trabajador/eliminar/6
+
+// ----------> Editar Trabajador por id PUT
+http://localhost:8080/api/trabajador/editar/3
+{
+        "run": null,
+        "nombre": "Dayanna",
+        "apellido1": "Nunez",
+        "apellido2": null,
+        "email": null,
+        "telefono": 12124312222,
+        "institucionSalud":{
+            "idInstSalud":1
+        },
+        "institucionPrevision":{
+            "idInstPrevision":3
+        },
+        "listarEmpleadores":[
+            {"idEmpleador":3},
+            {"idEmpleador":8}
+             
+        ] 
+}
+// ----------> CREAR metodo POST
+http://localhost:8080/api/trabajador
+{
+        "run": 123123112,
+        "nombre": "Dayanna",
+        "apellido1": "Nunez",
+        "apellido2": null,
+        "email": null,
+        "telefono": 12124312222,
+        "institucionSalud":{
+            "idInstSalud":1
+        },
+        "institucionPrevision":{
+            "idInstPrevision":3
+        },
+        "listarEmpleadores":[
+            {"idEmpleador":3},
+            {"idEmpleador":8}
+             
+        ] 
+}
+------------------------------Liquidacion-------------------------------------
+Liquidacion(GET, POST, PUT, DELETE)
+
+// ----------> Listar todas las Liquidaciones GET
+http://localhost:8080/api/liquidacion
+
+// ----------> Buscar una Liquidacion por id GET
+http://localhost:8080/api/liquidacion/buscar/1
+
+// ----------> Eliminar Liquidacion por id DELETE
+http://localhost:8080/api/liquidacion/eliminar/6
+
+// ----------> Editar Liquidacion por id PUT
+http://localhost:8080/api/liquidacion/editar/3
+
+{
+        "sueldoImponible": 700000,
+        "anticipo": 200000
+}
+
+// ----------> CREAR metodo POST
+http://localhost:8080/api/liquidacion
+{
+        "trabajador":{
+            "idTrabajador":2
+        },
+        "sueldoImponible": 800000,
+        "anticipo": 200000
+}
+
+
+
+
+
+
+

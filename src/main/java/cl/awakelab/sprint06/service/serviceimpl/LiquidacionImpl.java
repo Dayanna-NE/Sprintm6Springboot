@@ -1,6 +1,9 @@
 package cl.awakelab.sprint06.service.serviceimpl;
 
+import cl.awakelab.sprint06.entity.InstitucionPrevision;
+import cl.awakelab.sprint06.entity.InstitucionSalud;
 import cl.awakelab.sprint06.entity.Liquidacion;
+import cl.awakelab.sprint06.entity.Trabajador;
 import cl.awakelab.sprint06.repository.ILiquidacionRepository;
 import cl.awakelab.sprint06.service.ILiquidacionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +54,34 @@ public class LiquidacionImpl implements ILiquidacionService {
     @Override
     public void eliminarLiquidacion(Long idLiquidacion) {
         objLiquidacionRepo.deleteById(idLiquidacion);
+    }
+
+    @Override
+    public Liquidacion calcularLiquidacion(Liquidacion liquidacionNuevo,
+                                           InstitucionPrevision institucionPrevision,
+                                           InstitucionSalud institucionSalud
+                                           ) {
+        long anticipo =0;
+        long sueldoInponible = liquidacionNuevo.getSueldoImponible();
+        double salud = institucionSalud.getProcDcto() /100 ;
+        double prevision = institucionPrevision.getProDcto() /100;
+        long montoSalud= Math.round(sueldoInponible * salud);
+        long montoPrevicion= Math.round(sueldoInponible * prevision);
+        long totalDescuento = Math.round(montoSalud + montoPrevicion);
+        long totalHaberes= Math.round(sueldoInponible - totalDescuento);
+        long sueldoLiquido = Math.round(totalHaberes);
+        if (liquidacionNuevo.getAnticipo()!=null){
+            anticipo = liquidacionNuevo.getAnticipo();
+            sueldoLiquido -= anticipo;
+        }
+        liquidacionNuevo.setInstitucionSalud(institucionSalud);
+        liquidacionNuevo.setInstitucionPrevision(institucionPrevision);
+        liquidacionNuevo.setMontoInstSalud((int) montoSalud);
+        liquidacionNuevo.setMontoInstPrevisional((int) montoPrevicion);
+        liquidacionNuevo.setTotalDescuento((int) totalDescuento);
+        liquidacionNuevo.setTotalHaberes((int) totalHaberes);
+        liquidacionNuevo.setAnticipo((int) anticipo);
+        liquidacionNuevo.setSueldoLiquido((int) sueldoLiquido);
+        return liquidacionNuevo;
     }
 }
