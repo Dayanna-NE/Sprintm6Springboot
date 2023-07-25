@@ -30,12 +30,14 @@ public class UsuarioRestController {
     public ResponseEntity<?>  buscarUsuarioPorId(@PathVariable int idUsuario){
         try{
             Usuario usuario = objUsuarioService.buscarUsuarioId(idUsuario);
-            return ResponseEntity.ok(usuario);
+            Map<String,Object> response = new HashMap<>();
+            response.put("Usuario",usuario );
+            response.put("mensaje","¡Usuario encontrado con exito! ٩(^ᴗ^)۶");
+            return ResponseEntity.ok(response);
         }catch (NoSuchElementException e){
-            String msjError = "El usuario con el id "+idUsuario+" no ha podido ser encontrado.";
+            String msjError = "Usuario con el id "+idUsuario+" no ha podido ser encontrado.";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msjError);
         }
-
     }
     //Actualizar un usuario
     @PutMapping("/editar/{idUsuario}")
