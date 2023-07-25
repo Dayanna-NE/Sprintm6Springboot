@@ -15,7 +15,7 @@ public class PerfilImpl implements IPerfilService{
     @Autowired
     IPerfilRepository objPerfilRepo;
     @Override
-    public Perfil cerarPerfil(Perfil perfil) {
+    public Perfil crearPerfil(Perfil perfil) {
         return objPerfilRepo.save(perfil);
     }
 

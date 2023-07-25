@@ -41,7 +41,12 @@ public class UsuarioImpl implements IUsuarioService {
     @Override
     public Usuario actualizarUsuario(Usuario usuarioActualizar) {
         Usuario usuario= objUsuarioRepo.findById(usuarioActualizar.getIdUsuario()).orElseThrow(()->new NoSuchElementException("No usuario con el id "+ usuarioActualizar.getIdUsuario()));
-        return objUsuarioRepo.save(usuarioActualizar);
+        usuario.setNombre(usuarioActualizar.getNombre());
+        usuario.setApellido1(usuarioActualizar.getApellido1());
+        usuario.setApellido2(usuarioActualizar.getApellido2());
+        usuario.setTelefono(usuarioActualizar.getTelefono());
+        usuario.setClave(usuarioActualizar.getClave());
+        return objUsuarioRepo.save(usuario);
     }
 
     @Override

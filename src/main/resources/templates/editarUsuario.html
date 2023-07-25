@@ -8,9 +8,6 @@
 <section class="formulario mb-5">
     <form th:action="@{/usuario/editar}" method="post" th:object="${usuarioHtml}" class="was-validated">
         <input type="hidden" th:field="*{idUsuario}" />
-        <input type="hidden" th:field="*{perfil.idPerfil}" />
-        <input type="hidden" th:field="*{run}" />
-        <input type="hidden" th:field="*{fechaCreacion}" />
         <!-------------------------------RUT DE QUIEN EDITA----------------------------------------------->
         <div class="row g2 mb-3 position-relative outline-dark">
             <div class="col-md-6 position-relative">
@@ -46,7 +43,7 @@
         </div>
         <div class="mb-3">
             <label for="clave" class="form-label">Contraseña</label>
-            <input type="password" th:field="*{clave}" th:value="${usuarioHtml.clave}" class="form-control" placeholder="Ingrese Contraseña" id="clave" required>
+            <input type="password" name="clave" th:value="${usuarioHtml.clave}" class="form-control" placeholder="Ingrese Contraseña" id="clave" required>
         </div>
         <div class="btnEditar mb-3">
             <button type="submit" class="btn btn-primary mt-3 w-50"><i class="fa-solid fa-pen-to-square"></i>Guardar Cambios</button>

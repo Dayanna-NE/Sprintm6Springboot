@@ -56,7 +56,7 @@
     <div class="row g2 mb-5">
       <div class="col-md-6 position-relative mt-3">
           <label for="institucionSalud2" class="form-label">Institución de Salud</label>
-          <select th:field="*{institucionSalud}" class="form-select is-invalid"  id="institucionSalud2" aria-describedby="institucionSaludAD" disabled>
+          <select name="institucionSalud" class="form-select is-invalid"  id="institucionSalud2" aria-describedby="institucionSaludAD" disabled>
             <option selected disabled value=""><--Automatico--></option>
             <th:block th:each="salud :${listaSaludHtml}">
               <option th:value="${salud.idInstSalud}"
@@ -85,7 +85,7 @@
     <div class="row g2 mb-5">
       <div class="col-md-6 position-relative mt-3">
           <label for="institucionPrevision2" class="form-label">AFP</label>
-          <select th:field="*{institucionPrevision}"  class="form-select is-invalid"   id="institucionPrevision2" aria-describedby="institucionPrevisionAD" disabled  >
+          <select name="institucionPrevision" class="form-select is-invalid"   id="institucionPrevision2" aria-describedby="institucionPrevisionAD" disabled  >
             <option selected disabled value=""><--Automatico--></option>
             <th:block th:each="prevision : ${listaPrevisionHtml}">
               <option th:value="${prevision.idInstPrevision}"

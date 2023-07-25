@@ -32,7 +32,15 @@ public class TrabajadorImpl implements ITrabajadorService {
     @Override
     public Trabajador actualizarTrabajador(Trabajador trabajadorActualizar) {
         Trabajador trabajador = buscarTrabajador(trabajadorActualizar.getIdTrabajador());
-        return objTrabajadorRepo.save(trabajadorActualizar);
+        trabajador.setNombre(trabajadorActualizar.getNombre());
+        trabajador.setApellido1(trabajadorActualizar.getApellido1());
+        trabajador.setApellido2(trabajadorActualizar.getApellido2());
+        trabajador.setEmail(trabajadorActualizar.getEmail());
+        trabajador.setTelefono(trabajadorActualizar.getTelefono());
+        trabajador.setListarEmpleadores(trabajadorActualizar.getListarEmpleadores());
+        trabajador.setInstitucionSalud(trabajadorActualizar.getInstitucionSalud());
+        trabajador.setInstitucionPrevision(trabajadorActualizar.getInstitucionPrevision());
+        return objTrabajadorRepo.save(trabajador);
     }
 
     @Override

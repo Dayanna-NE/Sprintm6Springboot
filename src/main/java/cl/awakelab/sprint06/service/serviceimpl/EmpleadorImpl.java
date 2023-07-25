@@ -15,7 +15,7 @@ public class EmpleadorImpl implements IEmpleadorService {
     IEmpleadorRepository objEmpleadorRepo;
 
     @Override
-    public Empleador cerarEmpleador(Empleador empleador) {
+    public Empleador crearEmpleador(Empleador empleador) {
         return objEmpleadorRepo.save(empleador);
     }
 
@@ -32,7 +32,13 @@ public class EmpleadorImpl implements IEmpleadorService {
     @Override
     public Empleador actualizarEmpleador(Empleador empleadorActualizar) {
         Empleador empleador = buscarEmpleador(empleadorActualizar.getIdEmpleador());
-        return objEmpleadorRepo.save(empleadorActualizar);
+        empleador.setNombre(empleadorActualizar.getNombre());
+        empleador.setApellido1(empleadorActualizar.getApellido1());
+        empleador.setApellido2(empleadorActualizar.getApellido2());
+        empleador.setEmail(empleadorActualizar.getEmail());
+        empleador.setDireccion(empleadorActualizar.getDireccion());
+        empleador.setTelefono(empleadorActualizar.getTelefono());
+        return objEmpleadorRepo.save(empleador);
     }
 
     @Override

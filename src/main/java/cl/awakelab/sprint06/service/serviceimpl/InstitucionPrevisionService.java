@@ -15,7 +15,7 @@ public class InstitucionPrevisionService implements IInstitucionPrevisionService
     IInstitucionPrevisionRepository objInstPrevisionRepo;
 
     @Override
-    public InstitucionPrevision cerarInstitucionPrevision(InstitucionPrevision institucionPrevision) {
+    public InstitucionPrevision crearInstitucionPrevision(InstitucionPrevision institucionPrevision) {
         return objInstPrevisionRepo.save(institucionPrevision);
     }
 

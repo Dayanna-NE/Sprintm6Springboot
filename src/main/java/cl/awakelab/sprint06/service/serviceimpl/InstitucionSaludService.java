@@ -15,7 +15,7 @@ public class InstitucionSaludService implements IInstitucionSaludService {
     IInstitucionSaludRepository objInstSaludRepo;
 
     @Override
-    public InstitucionSalud cerarInstitucionSalud(InstitucionSalud institucionSalud) {
+    public InstitucionSalud crearInstitucionSalud(InstitucionSalud institucionSalud) {
         return objInstSaludRepo.save(institucionSalud);
     }
 

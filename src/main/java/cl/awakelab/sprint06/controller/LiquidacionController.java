@@ -1,6 +1,5 @@
 package cl.awakelab.sprint06.controller;
 
-import cl.awakelab.sprint06.entity.InstitucionPrevision;
 import cl.awakelab.sprint06.entity.Liquidacion;
 import cl.awakelab.sprint06.service.IInstitucionPrevisionService;
 import cl.awakelab.sprint06.service.IInstitucionSaludService;
@@ -45,7 +44,7 @@ public class LiquidacionController {
     }
     @PostMapping("/crear")
     public String crearLiquidacion(@ModelAttribute Liquidacion liquidacion, RedirectAttributes redirectAttributes){
-        objLiquidacionService.cerarLiquidacion(liquidacion);
+        objLiquidacionService.crearLiquidacion(liquidacion);
         redirectAttributes.addFlashAttribute("mensaje","El número de liquidación: "+liquidacion.getIdLiquidacion() +", se ha registrado correctamente ~(*o*)~");
         return "redirect:/liquidacion";
     }

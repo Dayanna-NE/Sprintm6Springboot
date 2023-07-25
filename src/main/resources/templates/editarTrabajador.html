@@ -7,10 +7,8 @@
 <hr>
 <section class="formulario mb-5">
     <form th:action="@{/trabajador/editar}" method="post" class="needs-validation was-validated"  th:object="${trabajadorHtml}" >
-        <input type="hidden" th:field="*{run}" />
+
         <input type="hidden" th:field="*{idTrabajador}" />
-        <!--<input type="hidden" th:field="*{institucionPrevision}">
-        <input type="hidden" th:field="*{institucionSalud}">-->
         <!-------------------------------RUT DE QUIEN EDITA----------------------------------------------->
         <div class="row g2 mb-3 position-relative outline-dark">
             <div class="col-md-6 position-relative">

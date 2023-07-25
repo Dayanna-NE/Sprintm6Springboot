@@ -47,10 +47,11 @@ $(document).ready(function() {
     });
     $('#apellido2').on('input',function (){
         validarSoloTexto('#apellido2',false);
-
     });
 
-
+    $('#runDisabled').on('input',function (){
+         $('#runDisabled').val(formatearRun($(this).val()));
+    })
 
 
 
@@ -108,5 +109,5 @@ $(document).ready(function() {
         }
     });
 
-
+$('#runDisabled').trigger('input');
 });

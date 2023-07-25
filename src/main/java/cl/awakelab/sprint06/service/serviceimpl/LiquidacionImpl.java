@@ -17,7 +17,7 @@ public class LiquidacionImpl implements ILiquidacionService {
     ILiquidacionRepository objLiquidacionRepo;
 
     @Override
-    public Liquidacion cerarLiquidacion(Liquidacion liquidacion) {
+    public Liquidacion crearLiquidacion(Liquidacion liquidacion) {
         liquidacion.setPeriodo(LocalDateTime.now());
         if (liquidacion.getAnticipo()==null){
             liquidacion.setAnticipo(0);
@@ -38,10 +38,14 @@ public class LiquidacionImpl implements ILiquidacionService {
     @Override
     public Liquidacion actualizarLiquidacion(Liquidacion liquidacionActualizar) {
         Liquidacion liquidacion = buscarLiquidacion(liquidacionActualizar.getIdLiquidacion());
-        if (liquidacionActualizar.getAnticipo()==null){
-            liquidacionActualizar.setAnticipo(0);
-        }
-        return objLiquidacionRepo.save(liquidacionActualizar);
+        liquidacion.setSueldoImponible(liquidacionActualizar.getSueldoImponible());
+        liquidacion.setMontoInstSalud(liquidacionActualizar.getMontoInstSalud());
+        liquidacion.setMontoInstPrevisional(liquidacionActualizar.getMontoInstPrevisional());
+        liquidacion.setTotalDescuento(liquidacionActualizar.getTotalDescuento());
+        liquidacion.setTotalHaberes(liquidacionActualizar.getTotalHaberes());
+        liquidacion.setAnticipo(liquidacionActualizar.getAnticipo());
+        liquidacion.setSueldoLiquido(liquidacionActualizar.getSueldoLiquido());
+        return objLiquidacionRepo.save(liquidacion);
     }
 
     @Override

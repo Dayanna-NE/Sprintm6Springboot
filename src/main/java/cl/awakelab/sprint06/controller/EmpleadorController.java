@@ -1,7 +1,6 @@
 package cl.awakelab.sprint06.controller;
 
 import cl.awakelab.sprint06.entity.Empleador;
-import cl.awakelab.sprint06.entity.Trabajador;
 import cl.awakelab.sprint06.entity.Usuario;
 import cl.awakelab.sprint06.service.IEmpleadorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -51,7 +49,7 @@ public class EmpleadorController {
             return "registrarEmpleador";
         }
         //si no existe el run
-        objEmpleadorService.cerarEmpleador(empleador); //Creado correctamente
+        objEmpleadorService.crearEmpleador(empleador); //Creado correctamente
         redirectAttributes.addFlashAttribute("mensaje","El empleador "+empleador.getNombre()+" registrado correctamente ~(*o*)~");
         return "redirect:/empleador";
 

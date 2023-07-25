@@ -8,8 +8,6 @@
 <section class="formulario mb-5">
     <form th:action="@{/empleador/editar}" method="post" th:object="${empleadorHtml}" class="needs-validation was-validated">
         <input type="hidden" th:field="*{idEmpleador}" />
-        <input type="hidden" th:field="*{run}" />
-        <input type="hidden" th:field="*{usuario.idUsuario}" />
         <div class="row g2 mb-3 position-relative outline-dark">
             <div class="col-md-6 position-relative">
                 <div  class="input-group has-validation fs-4 ">

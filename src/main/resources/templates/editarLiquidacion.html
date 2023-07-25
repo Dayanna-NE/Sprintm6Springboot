@@ -18,7 +18,6 @@
         <input type="hidden" name="totalHaberes">
         <input type="hidden" name="anticipo">
         <input type="hidden" th:field="*{idLiquidacion}">
-        <input type="hidden" th:field="*{periodo}">
         <div class="row g2 mb-5">
             <!----------------------------------Trabajador----------------------------------------------->
             <div class="col-md-6 position-relative mt-3">
@@ -129,7 +128,7 @@
             </div>
             <!----------------------------------Total Haberes----------------------------------------------->
             <div class="col-md-6 position-relative mt-3">
-                <label for="totalHaberes" class="form-label">Monto Salud</label>
+                <label for="totalHaberes" class="form-label">Total Haberes</label>
                 <div class="input-group has-validation">
                     <span id="itotalHaberes" class="input-group-text bg-secondary border-secondary text-white" >$</span>
                     <input type="text" th:value="*{totalHaberes}"  class="form-control is-valid border-secondary" id="totalHaberes" placeholder="00.00" readonly>
@@ -153,7 +152,7 @@
             </div>
             <!----------------------------------Sueldo Liquido----------------------------------------------->
             <div class="col-md-6 position-relative mt-3">
-                <label for="sueldoLiquido" class="form-label">Monto Salud</label>
+                <label for="sueldoLiquido" class="form-label">Sueldo Liquido</label>
                 <div class="input-group has-validation">
                     <span id="isueldoLiquido" class="input-group-text bg-secondary border-secondary text-white" >$</span>
                     <input type="text" th:value="*{sueldoLiquido}"  class="form-control is-valid border-secondary " id="sueldoLiquido" placeholder="00.00" readonly>
