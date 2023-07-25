@@ -1,5 +1,6 @@
 package cl.awakelab.sprint06.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -28,6 +29,7 @@ public class Empleador {
     @Column(length = 100)
     private String email;
     //Id Usuario
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //para poder escribir en formato Json
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario",nullable = false)
     private Usuario usuario;

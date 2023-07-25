@@ -1,5 +1,7 @@
 package cl.awakelab.sprint06.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -26,6 +28,7 @@ public class Usuario {
     @Column(name = "apellido_2",length = 100)
     private String apellido2;
     // ID PERFIL
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //para poder escribir en formato Json
     @ManyToOne(optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_perfil",nullable = false) //reemplaza el @Column
     private Perfil perfil;
@@ -37,6 +40,7 @@ public class Usuario {
     @Column(columnDefinition = "bigint")
     private Long telefono;
     //enlazando con empleador
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     private List<Empleador> listarEmpleadores;
 }

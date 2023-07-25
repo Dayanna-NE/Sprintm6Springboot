@@ -1,5 +1,6 @@
 package cl.awakelab.sprint06.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class Liquidacion {
     @Column(name = "id_liquidacion",columnDefinition = "bigint",nullable = false)
     private Long idLiquidacion;
     //---------------------------------------Id trabajador-------------------
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //para poder escribir en formato Json
     @ManyToOne(optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_trabajador")
     private Trabajador trabajador;
@@ -26,6 +28,7 @@ public class Liquidacion {
     @Column(name = "sueldo_liquido",nullable = false)
     private Integer sueldoLiquido;
     //id institucion salud
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //para poder escribir en formato Json
     @ManyToOne(optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_inst_salud",nullable = false)
     private InstitucionSalud institucionSalud;
@@ -33,6 +36,7 @@ public class Liquidacion {
     @Column(name = "monto_inst_salud",nullable = false)
     private Integer montoInstSalud;
     //id institucion provisional
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //para poder escribir en formato Json
     @ManyToOne(optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "id_inst_previsional",nullable = false)
     private InstitucionPrevision institucionPrevision;

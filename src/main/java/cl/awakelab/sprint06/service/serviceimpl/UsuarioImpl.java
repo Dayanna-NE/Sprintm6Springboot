@@ -19,6 +19,7 @@ public class UsuarioImpl implements IUsuarioService {
     public Usuario crearUsuario(Usuario usuario) {
         Usuario usu = objUsuarioRepo.findByRun(usuario.getRun());
         if (usu == null) {
+            usuario.setIdUsuario(null);
             usuario.setFechaCreacion(LocalDateTime.now());
             objUsuarioRepo.save(usuario);
             return usu;
